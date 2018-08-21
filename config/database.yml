@@ -32,7 +32,7 @@ development:
   username: dbu_momoney
 
   # The password associated with the postgres role (username).
-  password: <%= ENV['MOMONEY_DATABASE_PASSWORD'] %>
+  password: "<%= ENV['MOMONEY_DATABASE_PASSWORD'] %>"
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -70,7 +70,7 @@ test:
   username: dbu_momoney
 
   # The password associated with the postgres role (username).
-  password: <%= ENV['MOMONEY_DATABASE_PASSWORD'] %>
+  password: "<%= ENV['MOMONEY_DATABASE_PASSWORD'] %>"
 #
 # On Heroku and other platform providers, you may have a full connection URL
 # available as an environment variable. For example:
