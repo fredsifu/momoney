@@ -37,11 +37,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-components-font-awesome'
   gem 'rails-assets-jquery'
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-jquery-ui-touch-punch-improved'
-  gem 'rails-assets-bootstrap'
-  gem 'rails-assets-components-font-awesome'
 end
 
 group :development, :test do
