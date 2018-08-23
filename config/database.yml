@@ -84,6 +84,7 @@ test:
 #
 production:
   <<: *default
-  database: momoney_production
-  username: momoney
-  password: <%= ENV['MOMONEY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  #database: momoney_production
+  #username: momoney
+  #password: <%= ENV['MOMONEY_DATABASE_PASSWORD'] %>
