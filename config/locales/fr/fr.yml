@@ -29,15 +29,20 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+fr:
+  loan_types:
+    auto: "Prêt automobile"
+    home: "Prêt hypothécaire"
+    personal: "Prêt personnel"
   navigation:
-    language: "Language"
+    language: "Langue"
   pages:
     about:
-      nav: "About"
-      page_title: "About Momoney"
-      page_description_html: "Momoney helps you find your loan since 2018."
+      nav: "À propos"
+      page_title: "À propos de Momoney"
+      page_lead: "Momoney est à votre service pour trouver un prêt avantageux depuis 2018."
     index:
       nav: "Momoney"
       page_title: "Momoney"
-      page_description_html: "The simple and modern way to finance your projects."
+      page_lead: "La façon simple et moderne de trouver un prêt qui correspond à vos besoins."
+      loan_type: "De quel type de prêt avez-vous besoin?"

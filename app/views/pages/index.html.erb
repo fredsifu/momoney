@@ -1,6 +1,47 @@
 <div>
   <h1><%= t('.page_title') %></h1>
   <p class="lead">
-    <%= t('.page_description_html') %>
+    <%= t('.page_lead') %>
   </p>
+  <p>
+    <%= t('.loan_type') %>
+  </p>
+</div>
+<div class="row row-grid">
+  <div class="col-md-4 mt-5 px-4">
+    <%= link_to root_path do %>
+      <div data-animate-hover="2">
+        <div class="card shadow-sm animate-this">
+          <div class="card-body text-center">
+            <p><%= fa_icon('car 5x') %></p>
+            <p><%= t('loan_types.auto') %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4 mt-5 px-4">
+    <%= link_to root_path do %>
+      <div data-animate-hover="2">
+        <div class="card shadow-sm animate-this">
+          <div class="card-body text-center">
+            <p><%= fa_icon('home 5x') %></p>
+            <p><%= t('loan_types.home') %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4 mt-5 px-4">
+    <%= link_to root_path do %>
+      <div data-animate-hover="2">
+        <div class="card shadow-sm animate-this">
+          <div class="card-body text-center">
+            <p><%= fa_icon('dollar-sign 5x') %></p>
+            <p><%= t('loan_types.personal') %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

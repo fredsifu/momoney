@@ -1,5 +1,6 @@
 body {
   padding-top: 5rem;
+  padding-bottom: 5rem;
   background-color: #F7F7F7;
 }
 
@@ -15,4 +16,32 @@ footer {
 
 navbar {
   background: transparent;
+}
+
+.shadow,[data-animate-hover='1']:hover .animate-this, [data-animate-hover='2']:hover .animate-this {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+[data-animate-hover] .animate-this {
+  position: relative;
+  top: 0;
+  transition: all .2s ease-in-out;
+  will-change: transform;
+}
+
+[data-animate-hover='1']:hover .animate-this {
+  top: -1rem;
+}
+
+[data-animate-hover='2']:hover .animate-this {
+  z-index: 10;
+  transform: scale(1.1);
+}
+
+[class*="shadow"] {
+  transition: all .2s ease-in-out;
+}
+
+.shadow-sm {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
 }
