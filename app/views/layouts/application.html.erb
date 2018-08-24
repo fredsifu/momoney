@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <!link rel="icon" href="favicon.ico">
 
     <title><%= content_for?(:title) ? yield(:title) : "Momoney" %></title>
 
@@ -23,6 +23,8 @@
     <%= render partial: 'layouts/navigation' %>
 
     <div class="container">
+      <%= bootstrap_flash(class: 'd-print-none') %>
+
       <%= yield %>
     </div><!-- /.container -->
 
@@ -37,12 +39,3 @@
 
   </body>
 </html>
-
-<%= content_for :head do %>
-  <script>
-    $('#navId a').click(e => {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-  </script>
-<% end %>
