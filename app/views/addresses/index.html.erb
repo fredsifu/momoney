@@ -1,0 +1,29 @@
+<%- model_class = Address -%>
+<h1><%= model_class.model_name.human(count: 2) %></h1>
+
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th><%= model_class.model_name.human %></th>
+      <th class="text-right"><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= render 'addresses/address_inline', address: address %></td>
+        <td class="text-right">
+          <%= link_to t('helpers.links.show'), address, class: 'btn btn-sm btn-light' %>
+          <%= link_to t('helpers.links.edit'), edit_address_path(address), class: 'btn btn-sm btn-light' %>
+          <%= link_to t('helpers.links.destroy'), address, method: :delete, data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= t('.no_addresses_yet') if @addresses.empty? %></p>
+
+<br>
+
+<%= link_to t('helpers.links.new'), new_address_path, class: 'btn btn-primary' %>

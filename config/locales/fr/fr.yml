@@ -30,12 +30,67 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  helpers:
+    actions: "Actions"
+    error: "Erreur"
+    select:
+      account: "- Sélectionnez un compte ci-dessous -"
+      country: "- Sélectionnez un pays ci-dessous -"
+      timezone: "- Sélectionnez un fuseau horaire ci-dessous -"
+      type: "- Sélectionnez un type ci-dessous -"
+    links:
+      back: "Retour"
+      cancel: "Annuler"
+      confirm: "Êtes-vous certain(e)?"
+      destroy: "Supprimer"
+      edit: "Modifier"
+      new: "Nouveau"
+      show: "Voir"
+    submit:
+      create: "Créer"
+      send: "Envoyer"
+      submit: "Enregistrer"
+      update: "Modifier"
+      saving: "En traitement..."
+    system:
+      unauthorized:
+        action: "Vous n'avez pas l'autorisation d'effectuer cette action."
+        access: "Vous n'avez pas l'autorisation pour accéder à cette section."
+  controllers:
+    create:
+      success: "%{model} créé(e) avec succès."
+    update:
+      success: "%{model} modifié(e) avec succès."
+    destroy:
+      success: "%{model} supprimé(e) avec succès."
+  activerecord:
+    models:
+      address:
+        one: "Adresse"
+        other: "Adresses"
+    attributes:
+      address:
+        street_number: "Numéro civique"
+        route: "Route"
+        other_line: "Autre ligne"
+        unit_number: "Unité"
+        city: "Ville"
+        state_province_region: "État, province ou région"
+        zip_postal_code: "Code postal"
+        country_code: "Pays"
+        longitude: "Longitude"
+        latitude: "Latitude"
+        created_at: "Créée le"
+        updated_at: "Modifiée le"
   loan_types:
     auto: "Prêt automobile"
     home: "Prêt hypothécaire"
     personal: "Prêt personnel"
   navigation:
     language: "Langue"
+  addresses:
+    index:
+      no_addresses_yet: "Aucune adresse jusqu'à maintenant"
   pages:
     about:
       nav: "À propos"

@@ -1,0 +1,6 @@
+<%= address.unit_number + "-" if address.unit_number.present? %><%= address.street_number %> <%= address.route %>,
+<%= address.other_line + ", " if address.other_line.present? %>
+<%= address.city %>,
+<%= address.state_province_region %>,
+<%= address.country_name %>,
+<%= address.zip_postal_code %>

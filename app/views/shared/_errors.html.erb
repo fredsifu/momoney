@@ -1,0 +1,13 @@
+<% if object.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger" role="alert">
+    <h5 class="alert-heading"><%= t('errors.template.header', model: object.class.model_name.human, count: object.errors.count) %></h5>
+    <p class="mb-0">
+    <p><%= t('errors.template.body', count: object.errors.count) %></p>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    </p>
+  </div>
+<% end %>

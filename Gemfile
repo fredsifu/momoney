@@ -40,20 +40,30 @@ gem 'devise-i18n'
 # Devise bootstrap views
 gem 'devise-bootstrap-views'
 
+# Internationalization
+gem 'i18n-inflector-rails'
+gem 'i18n-timezones'
+gem 'rails-i18n'
+
+# Country codes
+gem 'country_select', '~> 3.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Interface
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-components-font-awesome'
   gem 'rails-assets-jquery'
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-jquery-ui-touch-punch-improved'
+  gem 'rails-assets-select2'
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -70,4 +80,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

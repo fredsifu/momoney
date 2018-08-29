@@ -1,0 +1,10 @@
+<% obj.errors.each do |attribute, error| %>
+
+  var input_name = '#<%= "#{obj.model_name.singular}_#{attribute}" %>';
+  var $input = $(input_name);
+  $input.addClass('is-invalid');
+
+  var $error_div = $input.next('.invalid-feedback');
+  $error_div.append('<%= obj.errors.full_message(attribute, error) %>; ');
+
+<% end %>

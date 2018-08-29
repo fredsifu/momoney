@@ -1,0 +1,54 @@
+<% obj = address %>
+<%= form_with model: obj, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :street_number %>
+    <%= form.text_field :street_number, class: 'form-control' %>
+    <div class="invalid-feedback"><%= err(obj, :street_number) %></div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :route %>
+    <%= form.text_field :route, class: 'form-control' %>
+    <div class="invalid-feedback"><%= err(obj, :route) %></div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :other_line %>
+    <%= form.text_field :other_line, class: 'form-control' %>
+    <div class="invalid-feedback"><%= err(obj, :other_line) %></div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :unit_number %>
+    <%= form.text_field :unit_number, class: 'form-control' %>
+    <div class="invalid-feedback"><%= err(obj, :unit_number) %></div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :city %>
+    <%= form.text_field :city, class: 'form-control' %>
+    <div class="invalid-feedback"><%= err(obj, :city) %></div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :state_province_region %>
+    <%= form.text_field :state_province_region, class: 'form-control' %>
+    <div class="invalid-feedback"><%= err(obj, :state_province_region) %></div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :zip_postal_code %>
+    <%= form.text_field :zip_postal_code, class: 'form-control' %>
+    <div class="invalid-feedback"><%= err(obj, :zip_postal_code) %></div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :country_code %><br>
+    <%= form.country_select :country_code, { include_blank: t('helpers.select.country'), priority_countries: %w[CA US FR] }, { class: 'form-control select2', data: { attribute: "value" } } %>
+    <div class="invalid-feedback"><%= err(obj, :country_code) %></div>
+  </div>
+
+  <%= form.submit class: 'btn btn-primary', 'data-disable-with': t('helpers.submit.saving') %>
+  <%= link_to t("helpers.links.cancel"), :back, :class => 'btn btn-light' %>
+
+<% end %>

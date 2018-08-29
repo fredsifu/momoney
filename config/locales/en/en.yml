@@ -30,12 +30,67 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  helpers:
+    actions: "Actions"
+    error: "Error"
+    select:
+      account: "- Select an account below -"
+      country: "- Select a country below -"
+      timezone: "- Select a time zone below -"
+      type: "- Select a type below -"
+    links:
+      back: "Back"
+      cancel: "Cancel"
+      confirm: "Are you sure?"
+      destroy: "Destroy"
+      edit: "Edit"
+      new: "New"
+      show: "Show"
+    submit:
+      create: "Create"
+      send: "Send"
+      submit: "Submit"
+      update: "Update"
+      saving: "Saving..."
+    system:
+      unauthorized:
+        action: "You are not authorized to perform this action."
+        access: "You are not authorized to access this section."
+  controllers:
+    create:
+      success: "%{model} was created successfully."
+    update:
+      success: "%{model} was updated successfully."
+    destroy:
+      success: "%{model} was destroyed successfully."
+  activerecord:
+    models:
+      address:
+        one: "Address"
+        other: "Addresses"
+    attributes:
+      address:
+        street_number: "Street Number"
+        route: "Route"
+        other_line: "Other Line"
+        unit_number: "Unit"
+        city: "City"
+        state_province_region: "State, Province or Region"
+        zip_postal_code: "Zip or Postal Code"
+        country_code: "Country"
+        longitude: "Longitude"
+        latitude: "Latitude"
+        created_at: "Created at"
+        updated_at: "Updated at"
   loan_types:
     auto: "Auto Loan"
     home: "Mortgage"
     personal: "Personal Loan"
   navigation:
     language: "Language"
+  addresses:
+    index:
+      no_addresses_yet: "No addresses yet"
   pages:
     about:
       nav: "About"

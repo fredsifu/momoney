@@ -1,0 +1,4 @@
+<%- model_class = Address -%>
+<h1><%= model_class.model_name.human %>: <%= t('helpers.links.edit') %></h1>
+
+<%= render 'addresses/form', address: @address %>

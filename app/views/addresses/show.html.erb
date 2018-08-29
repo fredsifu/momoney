@@ -1,0 +1,17 @@
+<%- model_class = Address -%>
+<h1><%= model_class.model_name.human %></h1>
+
+<div class="card">
+  <div class="card-body">
+
+    <%- address = @address -%>
+    <%= address.unit_number + "-" if address.unit_number.present? %><%= address.street_number %> <%= address.route %><br />
+    <% unless address.other_line.blank? %><%= address.other_line %><br /><% end %>
+    <%= address.city %>, <%= address.state_province_region %>, <%= address.country_name %><br />
+    <%= address.zip_postal_code %>
+
+  </div>
+</div>
+
+<%= link_to t('helpers.links.back'), addresses_path, class: 'btn btn-primary' %>
+<%= link_to t('helpers.links.edit'), edit_address_path(@address), class: 'btn btn-secondary' %>
