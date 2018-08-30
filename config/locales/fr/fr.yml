@@ -111,11 +111,23 @@ fr:
       nav: "À propos"
       page_title: "À propos de Momoney"
       page_lead: "Momoney est à votre service pour trouver un prêt avantageux depuis 2018."
+    car:
+      nav: "Prêt automobile"
+      page_title: "Prêt automobile"
+      page_lead: "Suivez les étapes jusqu'à la fin pour nous renseigner sur vos besoins."
+    home:
+      nav: "Prêt hypothécaire"
+      page_title: "Prêt hypothécaire"
+      page_lead: "Suivez les étapes jusqu'à la fin pour nous renseigner sur vos besoins."
     index:
       nav: "Momoney"
       page_title: "Momoney"
       page_lead: "La façon simple et moderne de trouver un prêt qui correspond à vos besoins."
       loan_type: "De quel type de prêt avez-vous besoin?"
+    personal:
+      nav: "Prêt personnel"
+      page_title: "Prêt personnel"
+      page_lead: "Suivez les étapes jusqu'à la fin pour nous renseigner sur vos besoins."
   user_profiles:
     index:
       no_user_profiles_yet: "Aucun profil utilisateur jusqu'à maintenant"

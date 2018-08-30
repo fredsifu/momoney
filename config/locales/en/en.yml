@@ -109,11 +109,23 @@ en:
       nav: "About"
       page_title: "About Momoney"
       page_lead: "Momoney helps you find your loan since 2018."
+    car:
+      nav: "Auto Loan"
+      page_title: "Auto Loan"
+      page_lead: "Follow the steps until the end to tell us exactly what you need."
+    home:
+      nav: "Mortgage"
+      page_title: "Mortgage"
+      page_lead: "Follow the steps until the end to tell us exactly what you need."
     index:
       nav: "Momoney"
       page_title: "Momoney"
       page_lead: "The simple and modern way to finance your projects."
       loan_type: "What type of loan do you need?"
+    personal:
+      nav: "Personal Loan"
+      page_title: "Personal Loan"
+      page_lead: "Follow the steps until the end to tell us exactly what you need."
   user_profiles:
     index:
       no_user_profiles_yet: "No user profiles yet"
