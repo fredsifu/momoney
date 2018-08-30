@@ -68,6 +68,9 @@ en:
       address:
         one: "Address"
         other: "Addresses"
+      user_profile:
+        one: "User Profile"
+        other: "User Profiles"
     attributes:
       address:
         street_number: "Street Number"
@@ -82,12 +85,22 @@ en:
         latitude: "Latitude"
         created_at: "Created at"
         updated_at: "Updated at"
+      user_profile:
+        firstname: "First Name"
+        lastname: "Last Name"
+        birthdate: "Birth Date"
+        phone: "Phone Number"
+        sin: "Social Insurance Number"
+        created_at: "Created at"
+        updated_at: "Updated at"
   loan_types:
     auto: "Auto Loan"
     home: "Mortgage"
     personal: "Personal Loan"
   navigation:
     language: "Language"
+    sign_in: "Sign in"
+    sign_out: "Sign out"
   addresses:
     index:
       no_addresses_yet: "No addresses yet"
@@ -101,3 +114,6 @@ en:
       page_title: "Momoney"
       page_lead: "The simple and modern way to finance your projects."
       loan_type: "What type of loan do you need?"
+  user_profiles:
+    index:
+      no_user_profiles_yet: "No user profiles yet"

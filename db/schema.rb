@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_183504) do
+ActiveRecord::Schema.define(version: 2018_08_30_022834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 2018_08_28_183504) do
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
+  create_table "user_profiles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "firstname"
+    t.string "lastname"
+    t.datetime "birthdate"
+    t.string "phone"
+    t.string "sin"
+    t.bigint "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_user_profiles_on_address_id"
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,4 +59,6 @@ ActiveRecord::Schema.define(version: 2018_08_28_183504) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "user_profiles", "addresses"
+  add_foreign_key "user_profiles", "users"
 end

@@ -2,11 +2,11 @@
   <div class="container">
     <%= link_to t('pages.index.nav'), root_path, class: 'navbar-brand' %>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav ml-auto my-auto">
 
         <li class="nav-item">
@@ -21,16 +21,22 @@
           </div>
         </li>
 
-        <!--
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        -->
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <%= link_to fa_icon('user'), '#', class: 'nav-link dropdown-toggle', id: 'dropdown-session', aria: { haspopup: 'true', expanded: 'false' }, data: { toggle: 'dropdown' } %>
+            <div class="dropdown-menu dropdown-menu-right" arie-labelledby="dropdown-session">
+              <div class="dropdown-item disabled"><%= current_user.email %></div>
+              <div class="dropdown-divider"></div>
+              <%= link_to t('navigation.edit_profile'), edit_user_profile_path(current_user.user_profile), class: 'dropdown-item' if current_user.user_profile %>
+              <%= link_to t('navigation.change_password'), edit_user_registration_path, class: 'dropdown-item' %>
+              <%= link_to fa_icon('sign-out-alt', text: t('navigation.sign_out')), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to fa_icon('sign-in-alt', text: t('navigation.sign_in')), new_user_session_path, class: 'btn btn-info' %>
+          </li>
+        <% end %>
 
       </ul>
     </div>

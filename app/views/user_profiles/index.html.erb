@@ -1,0 +1,41 @@
+<%- model_class = UserProfile -%>
+<h1><%= model_class.model_name.human(count: 2) %></h1>
+
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th><%= model_class.human_attribute_name(:firstname) %></th>
+      <th><%= model_class.human_attribute_name(:lastname) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:birthdate) %></th>
+      <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:sin) %></th>
+      <th><%= Address.model_name.human %></th>
+      <th class="text-right">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_profiles.each do |user_profile| %>
+      <tr>
+        <td><%= user_profile.firstname %></td>
+        <td><%= user_profile.lastname %></td>
+        <td><%= user_profile.user.email %></td>
+        <td><%= user_profile.birthdate %></td>
+        <td><%= user_profile.phone %></td>
+        <td>*** *** <%= user_profile.sin %></td>
+        <td><%= render 'addresses/address_inline', address: user_profile.address if user_profile.address.present? %></td>
+        <td class="text-right">
+          <%= link_to t('helpers.links.show'), user_profile, class: 'btn btn-sm btn-light' %>
+          <%= link_to t('helpers.links.edit'), edit_user_profile_path(user_profile), class: 'btn btn-sm btn-light' %>
+          <%= link_to t('helpers.links.destroy'), user_profile, method: :delete, data: { confirm: t('helpers.links.confirm') }, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= t('.no_user_profiles_yet') if @user_profiles.empty? %></p>
+
+<br>
+
+<%= link_to t('helpers.links.new'), new_user_profile_path, class: 'btn btn-primary' %>

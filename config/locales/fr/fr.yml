@@ -68,6 +68,9 @@ fr:
       address:
         one: "Adresse"
         other: "Adresses"
+      user_profile:
+        one: "Profil utilisateur"
+        other: "Profils utilisateur"
     attributes:
       address:
         street_number: "Numéro civique"
@@ -82,12 +85,24 @@ fr:
         latitude: "Latitude"
         created_at: "Créée le"
         updated_at: "Modifiée le"
+      user_profile:
+        firstname: "Prénom"
+        lastname: "Nom"
+        birthdate: "Date de naissance"
+        phone: "Téléphone"
+        sin: "Numéro d'assurance sociale"
+        created_at: "Créé le"
+        updated_at: "Modifié le"
   loan_types:
     auto: "Prêt automobile"
     home: "Prêt hypothécaire"
     personal: "Prêt personnel"
   navigation:
+    change_password: "Modifier le mot de passe"
+    edit_profile: "Modifier mon profil"
     language: "Langue"
+    sign_in: "Connecter"
+    sign_out: "Déconnecter"
   addresses:
     index:
       no_addresses_yet: "Aucune adresse jusqu'à maintenant"
@@ -101,3 +116,6 @@ fr:
       page_title: "Momoney"
       page_lead: "La façon simple et moderne de trouver un prêt qui correspond à vos besoins."
       loan_type: "De quel type de prêt avez-vous besoin?"
+  user_profiles:
+    index:
+      no_user_profiles_yet: "Aucun profil utilisateur jusqu'à maintenant"

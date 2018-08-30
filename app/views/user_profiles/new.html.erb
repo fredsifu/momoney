@@ -1,0 +1,4 @@
+<%- model_class = UserProfile -%>
+<h1><%= model_class.model_name.human %>: <%= t('helpers.links.new') %></h1>
+
+<%= render 'user_profiles/form', user_profile: @user_profile %>
