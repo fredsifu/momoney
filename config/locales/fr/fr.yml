@@ -45,10 +45,13 @@ fr:
       destroy: "Supprimer"
       edit: "Modifier"
       new: "Nouveau"
+      next: "Suivant"
+      previous: "Précédent"
       show: "Voir"
     submit:
       create: "Créer"
       send: "Envoyer"
+      sending: "En traitement..."
       submit: "Enregistrer"
       update: "Modifier"
       saving: "En traitement..."

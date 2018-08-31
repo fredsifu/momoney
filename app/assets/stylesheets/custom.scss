@@ -49,3 +49,20 @@ nav {
 .btn-light {
   background-color: #f0f0f0;
 }
+
+/* Wizard: style the form */
+.wiz_tab {
+  display: none; /* Hide all steps by default: */
+}
+
+.wiz_buttons {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: right;
+  overflow:auto;
+}
+
+/* noUiSlider */
+.noUi-target {
+  margin: 2rem 1rem 3rem 1rem;
+}

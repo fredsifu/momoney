@@ -159,7 +159,11 @@ GEM
     rails-assets-jquery-ui (1.12.1)
       rails-assets-jquery (>= 1.6)
     rails-assets-jquery-ui-touch-punch-improved (0.3.1)
+    rails-assets-nouislider (11.0.3)
     rails-assets-select2 (4.0.5)
+    rails-assets-smartwizard (4.3.1)
+      rails-assets-bootstrap (>= 4.0.0.alpha.6)
+      rails-assets-jquery (>= 1.9.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -257,7 +261,9 @@ DEPENDENCIES
   rails-assets-jquery!
   rails-assets-jquery-ui!
   rails-assets-jquery-ui-touch-punch-improved!
+  rails-assets-nouislider!
   rails-assets-select2!
+  rails-assets-smartwizard!
   rails-i18n
   sass-rails (~> 5.0)
   selenium-webdriver

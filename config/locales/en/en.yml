@@ -45,10 +45,13 @@ en:
       destroy: "Destroy"
       edit: "Edit"
       new: "New"
+      next: "Next"
+      previous: "Previous"
       show: "Show"
     submit:
       create: "Create"
       send: "Send"
+      sending: "Sending..."
       submit: "Submit"
       update: "Update"
       saving: "Saving..."

@@ -58,7 +58,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery'
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-jquery-ui-touch-punch-improved'
+  gem 'rails-assets-nouislider'
   gem 'rails-assets-select2'
+  gem 'rails-assets-smartwizard'
 end
 
 group :development, :test do

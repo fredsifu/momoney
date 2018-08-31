@@ -5,6 +5,9 @@ class PagesController < ApplicationController
   def personal
   end
 
+  def create_personal
+  end
+
   def car
   end
 
