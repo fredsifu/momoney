@@ -1,86 +1,131 @@
-var wiz_currentTab = 0;
+class Wizard {
+    constructor(form, tabs, indicators, progressBar, btnNext, btnPrevious, btnSubmit) {
+        this.form = form;
+        this.tabs = tabs;
+        this.indicators = indicators;
+        this.progressBar = progressBar;
+        this.currentTab = 0;
+        this.tabCount = this.tabs.length;
+        this.btnNext = btnNext;
+        this.btnPrevious = btnPrevious;
+        this.btnSubmit = btnSubmit;
 
-function wiz_progress() {
-    var x = document.getElementsByClassName("wiz_tab");
-    var count = x.length;
-    var progress = parseFloat(wiz_currentTab + 1) * parseFloat(100) / parseFloat(count);
-    return progress;
-}
+        if (this.btnNext){
+            // Learning point:
+            // in ECMAScript 6 and jquery, the "this" context on bind also has to be bound on the method called.
+            this.btnNext.bind("click", this.next.bind(this));
+        }
+        if (this.btnPrevious) {
+            this.btnPrevious.bind("click", this.previous.bind(this));
+        }
+        if (this.btnSubmit) {
+            this.btnSubmit.bind("click", this.submit.bind(this));
+        }
 
-function wiz_showTab(n) {
-    // This function will display the specified tab of the form ...
-    var x = document.getElementsByClassName("wiz_tab");
-    x[n].style.display = "block";
-
-    // ... and fix the Previous/Next/Submit buttons:
-    if (n === 0) {
-        document.getElementById("wiz_prevBtn").style.display = "none";
-    } else {
-        document.getElementById("wiz_prevBtn").style.display = "inline";
+        this.updateCurrentTab();
     }
-    if (n >= (x.length - 1)) {
-        document.getElementById("wiz_submitBtn").style.display = "inline";
-        document.getElementById("wiz_nextBtn").style.display = "none";
-    } else {
-        document.getElementById("wiz_submitBtn").style.display = "none";
-        document.getElementById("wiz_nextBtn").style.display = "inline";
+
+    get progress() {
+        let p = parseFloat((this.currentTab + 1).toString()) * parseFloat("100") / parseFloat(this.tabCount.toString());
+        return p;
     }
 
-    // Update progress bar
-    $('.wiz_progress').attr('aria-valuenow', wiz_progress() * 100).css('width', wiz_progress() + '%');
-}
-
-function wiz_next() {
-    wiz_nextPrev(1);
-}
-function wiz_previous() {
-    wiz_nextPrev(-1);
-}
-
-function wiz_nextPrev(n) {
-    // This function will figure out which tab to display
-    var x = document.getElementsByClassName("wiz_tab");
-    // Exit the function if any field in the current tab is invalid:
-    if (n === 1 && !wiz_validateForm()) return false;
-    // Hide the current tab:
-    x[wiz_currentTab].style.display = "none";
-    // Increase or decrease the current tab by 1:
-    wiz_currentTab = wiz_currentTab + n;
-
-    // if you have reached the end of the form... :
-    /*if (wiz_currentTab >= x.length) {
-        //...the form gets submitted
-        document.getElementById("wiz_form")[0].submit();
-        return false;
-    }*/
-    // Otherwise, display the correct tab:
-    wiz_showTab(wiz_currentTab);
-}
-
-function wiz_validateForm() {
-    // This function deals with validation of the form fields
-    var x, y, i, valid = true;
-    x = document.getElementsByClassName("wiz_tab");
-    y = x[wiz_currentTab].getElementsByTagName("input");
-    // A loop that checks every input field in the current tab:
-    for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-            // add an "invalid" class to the field:
-            y[i].className += " invalid";
-            // and set the current valid status to false:
-            valid = false;
+    updateProgressBar(p) {
+        if (this.progressBar) {
+            this.progressBar.attr('aria-valuenow', p * 100).css('width', p + '%');
         }
     }
-    return valid; // return the valid status
+
+    validateStep() {
+        let valid = true;
+        let inputs = this.tabs.eq(this.currentTab).find("input, select, textarea");//.filter('[required]:visible');
+        inputs.each(function (i) {
+            if ($(this).val() === "") {
+                $(this).addClass("is-invalid");
+                valid = false;
+            }
+        });
+        return valid;
+    }
+
+    updateButtonsVisibility() {
+        if (this.currentTab === 0) {
+            this.btnPrevious.hide();
+        }
+        else {
+            this.btnPrevious.show();
+        }
+
+        if (this.currentTab === this.tabCount - 1) {
+            this.btnSubmit.show();
+            this.btnNext.hide();
+        } else {
+            this.btnSubmit.hide();
+            this.btnNext.show();
+        }
+    }
+
+    next() {
+        if (!this.validateStep()) {
+            return false;
+        }
+
+        this.currentTab++;
+        if (this.currentTab >= this.tabCount - 1) {
+            // Normalize current tab
+            this.currentTab = this.tabCount - 1;
+        }
+
+        this.updateCurrentTab();
+    }
+
+    previous() {
+        this.currentTab--;
+        if (this.currentTab <= 0) {
+            // Normalize current tab
+            this.currentTab = 0;
+        }
+
+        this.updateCurrentTab();
+    }
+
+    updateCurrentTab() {
+        this.updateProgressBar(this.progress);
+        this.updateButtonsVisibility();
+
+        this.tabs.hide();
+        this.tabs.eq(this.currentTab).show();
+    }
+
+    submit() {
+        // Submit on last step only
+        if (this.currentTab >= this.tabCount - 1) {
+            // Normalize current tab
+            this.currentTab = this.tabCount - 1;
+        }
+        else {
+            return false;
+        }
+
+        if (!this.validateStep()) {
+            return false;
+        }
+
+        this.tabs.hide();
+
+        this.btnPrevious.hide();
+        this.btnNext.hide();
+        this.btnSubmit.hide();
+        this.form.submit();
+    }
 }
 
 function wiz_fixStepIndicator(n) {
     // This function removes the "active" class of all steps...
-    var i, x = document.getElementsByClassName("wiz_step");
-    for (i = 0; i < x.length; i++) {
-        x[i].className = x[i].className.replace(" active", "");
+    let i, steps = document.getElementsByClassName("wiz_step");
+    for (i = 0; i < steps.length; i++) {
+        steps[i].className = steps[i].className.replace(" active", "");
     }
     //... and adds the "active" class to the current step:
-    x[n].className += " active";
+    steps[n].className += " active";
 }

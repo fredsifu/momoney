@@ -12,25 +12,21 @@
   </div>
 </p>
 
-<%= form_with url: create_personal_path, local: true, class: 'wiz_form' do |form| %>
+<%= form_with model: PersonalLoan.new, url: create_personal_path, local: true, id: 'wiz_form' do |form| %>
 
   <div class="wiz_tab">
     <div class="card text-center">
       <div class="card-body">
-        <h2 class="card-title">Quelle est la raison de votre demande de prêt?</h2>
+        <h2 class="card-title"><%= t('.loan_purpose.question') %></h2>
         <p>
-          <%= form.select :loan_purpose,
-                options_for_select([
-                  ['Voyage ou Vacances','1'],
-                  ['Consolidation de dettes','2'],
-                  ['Refinancement de carte de crédit','3'],
-                  ['Dépenses médicales','4'],
-                  ['Marriage','5'],
-                  ['Déménagement','6'],
-                  ['Autre','7']
-                ]),
-                { include_blank: 'Choissez une option...' },
-                { class: 'form-control select2', data: { "minimum-results-for-search" => "Infinity" } } %>
+          <div class="form-group">
+            <%= form.select :purpose,
+                            options_for_select(PersonalLoan.purposes_for_select),
+                            { include_blank: t('helpers.select.purpose') },
+                            { class: 'form-control select2', style: 'width: 100%;',
+                              data: { "minimum-results-for-search" => "Infinity" } } %>
+            <div class="invalid-feedback"><%= t('.loan_purpose.errors.select') %></div>
+          </div>
         </p>
       </div>
     </div>
@@ -39,7 +35,7 @@
   <div class="wiz_tab">
     <div class="card text-center">
       <div class="card-body">
-        <h2 class="card-title">Combien aimeriez-vous emprunter?</h2>
+        <h2 class="card-title"><%= t('.loan_amount.question') %></h2>
         <p>
           <h3 id="amount_value">1000</h3>
           <div id="amount_slider" class="noUi-target noUi-horizontal"></div>
@@ -49,43 +45,87 @@
     </div>
   </div>
 
+  <%= form.fields :user_profile do |fields| %>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('activerecord.attributes.user_profile.fullname') %></h2>
+          <p>
+            <div class="form-group">
+              <%= fields.label :firstname %>
+              <%= fields.text_field :firstname, class: 'form-control' %>
+              <div class="invalid-feedback"><%= t('.user_profile.errors.firstname_empty') %></div>
+            </div>
+            <div class="form-group">
+              <%= fields.label :lastname %>
+              <%= fields.text_field :lastname, class: 'form-control' %>
+              <div class="invalid-feedback"><%= t('.user_profile.errors.lastname_empty') %></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('activerecord.attributes.user_profile.birthdate') %></h2>
+          <p>
+            <div class="form-group">
+              <div class="input-group">
+                <%= fields.date_field :birthdate, class: 'form-control', placeholder: 'yyyy-mm-dd hh:mm (ex. 2016-08-30 15:30)' %>
+                <span class="input-group-text"><%= fa_icon 'calendar' %></span>
+              </div>
+              <div class="invalid-feedback"><%= t('.user_profile.errors.eighteen_plus') %></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
   <div class="wiz_buttons">
-    <button type="button" id="wiz_prevBtn" onclick="wiz_previous();" class="btn btn-light"><%= t('helpers.links.previous') %></button>
-    <button type="button" id="wiz_nextBtn" onclick="wiz_next();" class="btn btn-primary"><%= t('helpers.links.next') %></button>
-    <%= form.submit t('helpers.submit.send'), id: 'wiz_submitBtn', class: 'btn btn-success', 'data-disable-with': t('helpers.submit.sending') %>
+    <button type="button" id="prevBtn" class="btn btn-light"><%= t('helpers.links.previous') %></button>
+    <button type="button" id="nextBtn" class="btn btn-primary"><%= t('helpers.links.next') %></button>
+    <button type="button" id="submitBtn" class="btn btn-success"><%= t('helpers.submit.send') %></button>
   </div>
 
 <% end %>
 
 <% content_for :head do %>
-  <script>
+  <script data-turbolinks-track="reload">
     $(document).on('turbolinks:load', function () {
 
-      wiz_currentTab = 0; // Current tab is set to be the first tab (0)
-      wiz_showTab(wiz_currentTab); // Display the current tab
+        let wizard = new Wizard($('#wiz_form'), $('.wiz_tab'), null, $('.wiz_progress'), $('#nextBtn'), $('#prevBtn'), $('#submitBtn'));
 
-      function filter500( value, type ){
-        return value % 1000 ? 2 : 1;
-      }
-      var amount_slider = document.getElementById('amount_slider');
-      noUiSlider.create(amount_slider, {
-        start: 1000,
-        step: 500,
-        connect: [true, false],
-        range: { 'min': 1000, 'max': 25000 },
-        pips: {
-          mode: 'values',
-          values: [1000, 5000, 10000, 15000, 20000, 25000],
-          density: 2,
-          stepped: true
-        }
-      });
-      amount_slider.noUiSlider.on('update', function (values, handle) {
-        const amount = values[handle];
-        $('#amount_value').html(accounting.formatMoney(amount, accounting_options_locale[current_locale]));
-        $('#amount').val(amount);
-      });
+        // Amount tab
+        let amount_slider = document.getElementById('amount_slider');
+        noUiSlider.create(amount_slider, {
+            start: 1000,
+            step: 500,
+            connect: [true, false],
+            range: { 'min': 1000, 'max': 25000 },
+            pips: {
+                mode: 'values',
+                values: [1000, 5000, 10000, 15000, 20000, 25000],
+                density: 2,
+                stepped: true
+            }
+        });
+        amount_slider.noUiSlider.on('update', function (values, handle) {
+            const amount = values[handle];
+            $('#amount_value').html(accounting.formatMoney(amount, accounting_options_locale[current_locale]));
+            $('#amount').val(amount);
+        });
 
+        $('select').on('change', function () {
+            $(this).removeClass('is-invalid');
+        });
+        $('input').on('input', function () {
+            $(this).removeClass('is-invalid');
+        });
     });
   </script>
 <% end %>

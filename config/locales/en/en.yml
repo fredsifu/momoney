@@ -36,6 +36,7 @@ en:
     select:
       account: "- Select an account below -"
       country: "- Select a country below -"
+      purpose: "- Select a purpose below -"
       timezone: "- Select a time zone below -"
       type: "- Select a type below -"
     links:
@@ -88,7 +89,21 @@ en:
         latitude: "Latitude"
         created_at: "Created at"
         updated_at: "Updated at"
+      personal_loan:
+        amount: "Amount"
+        purpose: "Purpose"
+        purposes:
+          vacation: "Trip or Vacation"
+          debt_consolidation: "Debt Consolidation"
+          credit_card_refinancing: "Credit Card Refinancing"
+          medical_expenses: "Medical Expenses"
+          wedding: "Wedding"
+          moving_expenses: "Moving Expenses"
+          other: "Other"
+        created_at: "Created at"
+        updated_at: "Updated at"
       user_profile:
+        fullname: "Full Name"
         firstname: "First Name"
         lastname: "Last Name"
         birthdate: "Birth Date"
@@ -129,6 +144,25 @@ en:
       nav: "Personal Loan"
       page_title: "Personal Loan"
       page_lead: "Follow the steps until the end to tell us exactly what you need."
+      loan_purpose:
+        question: "For what purpose are your borrowing?"
+        answers:
+          vacation: "Trip or Vacation"
+          debt_consolidation: "Debt Consolidation"
+          credit_card_refinancing: "Credit Card Refinancing"
+          medical_expenses: "Medical Expenses"
+          wedding: "Wedding"
+          moving_expenses: "Moving Expenses"
+          other: "Other"
+        errors:
+          select: "Choose a purpose"
+      loan_amount:
+        question: "How much would you like to borrow?"
+      user_profile:
+        errors:
+          firstname_empty: "First name must be filled."
+          lastname_empty: "Last name must be filled."
+          eighteen_plus: "Must be at least 18 years old."
   user_profiles:
     index:
       no_user_profiles_yet: "No user profiles yet"

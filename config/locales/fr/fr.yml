@@ -36,6 +36,7 @@ fr:
     select:
       account: "- Sélectionnez un compte ci-dessous -"
       country: "- Sélectionnez un pays ci-dessous -"
+      purpose: "- Sélectionnez une raison ci-dessous -"
       timezone: "- Sélectionnez un fuseau horaire ci-dessous -"
       type: "- Sélectionnez un type ci-dessous -"
     links:
@@ -88,7 +89,21 @@ fr:
         latitude: "Latitude"
         created_at: "Créée le"
         updated_at: "Modifiée le"
+      personal_loan:
+        amount: "Montant"
+        purpose: "Raison"
+        purposes:
+          vacation: "Voyage ou vacances"
+          debt_consolidation: "Consolidation de dettes"
+          credit_card_refinancing: "Refinancement de carte de crédit"
+          medical_expenses: "Dépenses médicales"
+          wedding: "Marriage"
+          moving_expenses: "Déménagement"
+          other: "Autre"
+        created_at: "Créé le"
+        updated_at: "Modifié le"
       user_profile:
+        fullname: "Nom complet"
         firstname: "Prénom"
         lastname: "Nom"
         birthdate: "Date de naissance"
@@ -131,6 +146,25 @@ fr:
       nav: "Prêt personnel"
       page_title: "Prêt personnel"
       page_lead: "Suivez les étapes jusqu'à la fin pour nous renseigner sur vos besoins."
+      loan_purpose:
+        question: "Quelle est la raison de votre demande de prêt ?"
+        answers:
+          vacation: "Voyage ou Vacances"
+          debt_consolidation: "Consolidation de dettes"
+          credit_card_refinancing: "Refinancement de carte de crédit"
+          medical_expenses: "Dépenses médicales"
+          wedding: "Marriage"
+          moving_expenses: "Déménagement"
+          other: "Autre"
+        errors:
+          select: "Sélectionnez une raison"
+      loan_amount:
+        question: "Combien aimeriez-vous emprunter?"
+      user_profile:
+        errors:
+          firstname_empty: "Prénom doit être rempli."
+          lastname_empty: "Nom doit être rempli."
+          eighteen_plus: "Doit être âgé(e) de 18 ans ou plus."
   user_profiles:
     index:
       no_user_profiles_yet: "Aucun profil utilisateur jusqu'à maintenant"
