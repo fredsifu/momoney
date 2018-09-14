@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Personal Loans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Purpose</th>
+      <th>Amount</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @personal_loans.each do |personal_loan| %>
+      <tr>
+        <td><%= personal_loan.purpose %></td>
+        <td><%= personal_loan.amount %></td>
+        <td><%= personal_loan.user %></td>
+        <td><%= link_to 'Show', personal_loan %></td>
+        <td><%= link_to 'Edit', edit_personal_loan_path(personal_loan) %></td>
+        <td><%= link_to 'Destroy', personal_loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Personal Loan', new_personal_loan_path %>

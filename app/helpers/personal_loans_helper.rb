@@ -1,0 +1,2 @@
+module PersonalLoansHelper
+end

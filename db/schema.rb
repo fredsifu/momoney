@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_022834) do
+ActiveRecord::Schema.define(version: 2018_09_06_225000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,39 @@ ActiveRecord::Schema.define(version: 2018_08_30_022834) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
+
+  create_table "borrower_profiles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.boolean "bankcruptcy"
+    t.integer "ownership"
+    t.decimal "other_revenues", precision: 20, scale: 10
+    t.decimal "assets", precision: 20, scale: 10
+    t.integer "credit_appreciation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_borrower_profiles_on_user_id"
+  end
+
+  create_table "employments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "status"
+    t.datetime "since"
+    t.string "employer"
+    t.string "title"
+    t.decimal "revenues", precision: 20, scale: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_employments_on_user_id"
+  end
+
+  create_table "personal_loans", force: :cascade do |t|
+    t.integer "purpose"
+    t.decimal "amount", precision: 20, scale: 10
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_personal_loans_on_user_id"
   end
 
   create_table "user_profiles", force: :cascade do |t|
@@ -59,6 +92,9 @@ ActiveRecord::Schema.define(version: 2018_08_30_022834) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "borrower_profiles", "users"
+  add_foreign_key "employments", "users"
+  add_foreign_key "personal_loans", "users"
   add_foreign_key "user_profiles", "addresses"
   add_foreign_key "user_profiles", "users"
 end

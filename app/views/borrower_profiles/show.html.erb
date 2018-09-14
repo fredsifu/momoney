@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @borrower_profile.user %>
+</p>
+
+<p>
+  <strong>Bankcruptcy:</strong>
+  <%= @borrower_profile.bankcruptcy %>
+</p>
+
+<p>
+  <strong>Ownership:</strong>
+  <%= @borrower_profile.ownership %>
+</p>
+
+<p>
+  <strong>Other revenues:</strong>
+  <%= @borrower_profile.other_revenues %>
+</p>
+
+<p>
+  <strong>Assets:</strong>
+  <%= @borrower_profile.assets %>
+</p>
+
+<p>
+  <strong>Credit appreciation:</strong>
+  <%= @borrower_profile.credit_appreciation %>
+</p>
+
+<%= link_to 'Edit', edit_borrower_profile_path(@borrower_profile) %> |
+<%= link_to 'Back', borrower_profiles_path %>

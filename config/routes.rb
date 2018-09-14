@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :borrower_profiles
+  resources :employments
+  resources :personal_loans
   scope '(:locale)', locale: /en|fr/ do
 
     devise_for :users

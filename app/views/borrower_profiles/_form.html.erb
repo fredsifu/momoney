@@ -1,0 +1,47 @@
+<%= form_with(model: borrower_profile, local: true) do |form| %>
+  <% if borrower_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(borrower_profile.errors.count, "error") %> prohibited this borrower_profile from being saved:</h2>
+
+      <ul>
+      <% borrower_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bankcruptcy %>
+    <%= form.check_box :bankcruptcy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ownership %>
+    <%= form.number_field :ownership %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other_revenues %>
+    <%= form.text_field :other_revenues %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assets %>
+    <%= form.text_field :assets %>
+  </div>
+
+  <div class="field">
+    <%= form.label :credit_appreciation %>
+    <%= form.number_field :credit_appreciation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

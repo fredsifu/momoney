@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @personal_loan.purpose %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @personal_loan.amount %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @personal_loan.user %>
+</p>
+
+<%= link_to 'Edit', edit_personal_loan_path(@personal_loan) %> |
+<%= link_to 'Back', personal_loans_path %>

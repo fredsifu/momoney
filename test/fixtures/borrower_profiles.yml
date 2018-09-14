@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  bankcruptcy: false
+  ownership: 1
+  other_revenues: 9.99
+  assets: 9.99
+  credit_appreciation: 1
+
+two:
+  user: two
+  bankcruptcy: false
+  ownership: 1
+  other_revenues: 9.99
+  assets: 9.99
+  credit_appreciation: 1
