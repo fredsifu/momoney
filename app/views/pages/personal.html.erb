@@ -12,7 +12,7 @@
   </div>
 </p>
 
-<%= form_with model: PersonalLoan.new, url: create_personal_path, local: true, id: 'wiz_form' do |form| %>
+<%= form_with model: PersonalLoan.new, url: create_personal_path, format: :js, id: 'wiz_form' do |form| %>
 
   <div class="wiz_tab">
     <div class="card text-center">
@@ -50,16 +50,16 @@
     <div class="wiz_tab">
       <div class="card text-center">
         <div class="card-body">
-          <h2 class="card-title"><%= t('activerecord.attributes.user_profile.fullname') %></h2>
+          <h2 class="card-title"><%= t('.user_profile.questions.fullname') %></h2>
           <p>
             <div class="form-group">
-              <%= fields.label :firstname %>
-              <%= fields.text_field :firstname, class: 'form-control' %>
+              <%= fields.label :firstname, UserProfile.human_attribute_name(:firstname) %>
+              <%= fields.text_field :firstname, class: 'form-control text-center' %>
               <div class="invalid-feedback"><%= t('.user_profile.errors.firstname_empty') %></div>
             </div>
             <div class="form-group">
-              <%= fields.label :lastname %>
-              <%= fields.text_field :lastname, class: 'form-control' %>
+              <%= fields.label :lastname, UserProfile.human_attribute_name(:lastname) %>
+              <%= fields.text_field :lastname, class: 'form-control text-center' %>
               <div class="invalid-feedback"><%= t('.user_profile.errors.lastname_empty') %></div>
             </div>
           </p>
@@ -70,15 +70,66 @@
     <div class="wiz_tab">
       <div class="card text-center">
         <div class="card-body">
-          <h2 class="card-title"><%= t('activerecord.attributes.user_profile.birthdate') %></h2>
+          <h2 class="card-title"><%= t('.user_profile.questions.birthdate') %></h2>
           <p>
             <div class="form-group">
               <div class="input-group">
-                <%= fields.date_field :birthdate, class: 'form-control', placeholder: 'yyyy-mm-dd hh:mm (ex. 2016-08-30 15:30)' %>
+                <%= fields.date_field :birthdate, class: 'form-control text-center', placeholder: 'yyyy-mm-dd hh:mm (ex. 2016-08-30 15:30)' %>
                 <span class="input-group-text"><%= fa_icon 'calendar' %></span>
               </div>
               <div class="invalid-feedback"><%= t('.user_profile.errors.eighteen_plus') %></div>
             </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.user_profile.questions.phone') %></h2>
+          <p>
+            <div class="form-group">
+              <%= fields.phone_field :phone, class: 'form-control text-center' %>
+              <div class="invalid-feedback"><%= t('.user_profile.errors.phone') %></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.user_profile.questions.sin') %></h2>
+          <p>
+          <div class="form-group">
+            <%= fields.text_field :sin, class: 'form-control text-center', type: 'sin' %>
+            <div class="invalid-feedback"><%= t('.user_profile.errors.sin') %></div>
+          </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+  <%= form.fields :user do |fields| %>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.user.questions.password') %></h2>
+          <p>
+          <div class="form-group">
+            <%= fields.label :password, User.human_attribute_name(:password) %>
+            <%= fields.password_field :password, class: 'form-control text-center' %>
+          </div>
+          <div class="form-group">
+            <%= fields.label :password, User.human_attribute_name(:password_confirmation) %>
+            <%= fields.password_field :password_confirmation, class: 'form-control text-center' %>
+            <div class="invalid-feedback"><%= t('.user.errors.password') %></div>
+          </div>
           </p>
         </div>
       </div>
@@ -99,6 +150,10 @@
     $(document).on('turbolinks:load', function () {
 
         let wizard = new Wizard($('#wiz_form'), $('.wiz_tab'), null, $('.wiz_progress'), $('#nextBtn'), $('#prevBtn'), $('#submitBtn'));
+
+        // Formatting
+        $('input[type="tel"]').mask('000-000-0000');
+        $('input[type="sin"]').mask('000 000 000');
 
         // Amount tab
         let amount_slider = document.getElementById('amount_slider');

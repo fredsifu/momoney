@@ -147,7 +147,7 @@ fr:
       page_title: "Prêt personnel"
       page_lead: "Suivez les étapes jusqu'à la fin pour nous renseigner sur vos besoins."
       loan_purpose:
-        question: "Quelle est la raison de votre demande de prêt ?"
+        question: "Quelle est la raison de votre demande de prêt?"
         answers:
           vacation: "Voyage ou Vacances"
           debt_consolidation: "Consolidation de dettes"
@@ -161,10 +161,17 @@ fr:
       loan_amount:
         question: "Combien aimeriez-vous emprunter?"
       user_profile:
+        questions:
+          fullname: "Quel est votre nom complet?"
+          birthdate: "Quelle est votre date de naissance"
+          phone: "À quel numéro de téléphone voulez-vous être rejoint?"
+          sin: "Quel est votre numéro d'assurance sociale?"
         errors:
           firstname_empty: "Prénom doit être rempli."
           lastname_empty: "Nom doit être rempli."
           eighteen_plus: "Doit être âgé(e) de 18 ans ou plus."
+          phone: "Numéro de téléphone doit être rempli."
+          sin: "Numéro d'assurance social doit être rempli."
   user_profiles:
     index:
       no_user_profiles_yet: "Aucun profil utilisateur jusqu'à maintenant"

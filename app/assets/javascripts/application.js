@@ -14,8 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery.mask
 //= require bootstrap
 //= require select2
 //= require nouislider
-//= require smartwizard
 //= require_tree .

@@ -159,10 +159,17 @@ en:
       loan_amount:
         question: "How much would you like to borrow?"
       user_profile:
+        questions:
+          fullname: "What is your full name?"
+          birthdate: "What is your date of birth?"
+          phone: "Which phone number should be used to reach you?"
+          sin: "What is your social insurance number?"
         errors:
           firstname_empty: "First name must be filled."
           lastname_empty: "Last name must be filled."
           eighteen_plus: "Must be at least 18 years old."
+          phone: "Phone number must be filled."
+          sin: "Social insurance number must be filled."
   user_profiles:
     index:
       no_user_profiles_yet: "No user profiles yet"
