@@ -50,6 +50,11 @@ nav {
   background-color: #f0f0f0;
 }
 
+// Hack to make what is selected more obvious to the user. (taken from btn-info:focus behaviour)
+.btn-group > .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active, .show > .btn-info.dropdown-toggle {
+  box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);
+}
+
 /* Wizard: style the form */
 .wiz_tab {
   display: none; /* Hide all steps by default: */

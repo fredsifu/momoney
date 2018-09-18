@@ -90,7 +90,7 @@
           <h2 class="card-title"><%= t('.user_profile.questions.phone') %></h2>
           <p>
             <div class="form-group">
-              <%= fields.phone_field :phone, class: 'form-control text-center' %>
+              <%= fields.phone_field :phone, class: 'form-control text-center', data: { mask: '000-000-0000' } %>
               <div class="invalid-feedback"><%= t('.user_profile.errors.phone') %></div>
             </div>
           </p>
@@ -103,14 +103,108 @@
         <div class="card-body">
           <h2 class="card-title"><%= t('.user_profile.questions.sin') %></h2>
           <p>
-          <div class="form-group">
-            <%= fields.text_field :sin, class: 'form-control text-center', type: 'sin' %>
-            <div class="invalid-feedback"><%= t('.user_profile.errors.sin') %></div>
-          </div>
+            <div class="form-group">
+              <%= fields.text_field :sin, class: 'form-control text-center', type: 'sin' %>
+              <div class="invalid-feedback"><%= t('.user_profile.errors.sin') %></div>
+            </div>
           </p>
         </div>
       </div>
     </div>
+
+  <% end %>
+
+  <%= form.fields :borrower_profile do |fields| %>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.borrower_profile.questions.bankcruptcy') %></h2>
+          <p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <%= fields.label :bankcruptcy, true, class: 'btn btn-info' do %>
+                <%= fields.radio_button :bankcruptcy, true, autocomplete: 'off', required: true %>
+                <%= t('.yes') %>
+              <% end %>
+              <%= fields.label :bankcruptcy, false, class: 'btn btn-info active' do %>
+                <%= fields.radio_button :bankcruptcy, false, autocomplete: 'off', required: true, checked: true %>
+                <%= t('.no') %>
+              <% end %>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.borrower_profile.questions.ownership') %></h2>
+          <p>
+            <div class="form-group">
+              <%= form.select :ownership,
+                              options_for_select(BorrowerProfile.ownerships_for_select),
+                              { include_blank: t('helpers.select.ownership') },
+                              { class: 'form-control select2', style: 'width: 100%;',
+                                data: { "minimum-results-for-search" => "Infinity" } } %>
+              <div class="invalid-feedback"><%= t('.borrower_profile.errors.ownership') %></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.borrower_profile.questions.credit_appreciation') %></h2>
+          <p>
+            <div class="form-group">
+              <%= form.select :ownership,
+                              options_for_select(BorrowerProfile.credit_appreciations_for_select),
+                              { include_blank: t('helpers.select.credit_appreciation') },
+                              { class: 'form-control select2', style: 'width: 100%;',
+                                data: { "minimum-results-for-search" => "Infinity" } } %>
+              <div class="invalid-feedback"><%= t('.borrower_profile.errors.credit_appreciation') %></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.borrower_profile.questions.other_revenues') %></h2>
+          <p>
+            <div class="form-group">
+              <%= fields.text_field :other_revenues, class: 'form-control text-center input-amount' %>
+              <div class="invalid-feedback"><%= t('.borrower_profile.errors.other_revenues') %></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.borrower_profile.questions.assets') %></h2>
+          <p>
+            <div class="form-group">
+              <%= fields.text_field :assets, class: 'form-control text-center input-amount' %>
+              <div class="invalid-feedback"><%= t('.borrower_profile.errors.assets') %></div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+  <%= form.fields :employment do |fields| %>
+
+
 
   <% end %>
 
@@ -119,17 +213,32 @@
     <div class="wiz_tab">
       <div class="card text-center">
         <div class="card-body">
-          <h2 class="card-title"><%= t('.user.questions.password') %></h2>
+          <h2 class="card-title"><%= t('.user.questions.email') %></h2>
           <p>
           <div class="form-group">
-            <%= fields.label :password, User.human_attribute_name(:password) %>
-            <%= fields.password_field :password, class: 'form-control text-center' %>
+            <%= fields.email_field :email, class: 'form-control text-center' %>
+            <div class="invalid-feedback"><%= t('.user.errors.email') %></div>
           </div>
-          <div class="form-group">
-            <%= fields.label :password, User.human_attribute_name(:password_confirmation) %>
-            <%= fields.password_field :password_confirmation, class: 'form-control text-center' %>
-            <div class="invalid-feedback"><%= t('.user.errors.password') %></div>
-          </div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiz_tab">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="card-title"><%= t('.user.questions.password_html') %></h2>
+          <p>
+            <div class="form-group">
+              <%= fields.label :password, User.human_attribute_name(:password) %>
+              <%= fields.password_field :password, class: 'form-control text-center' %>
+              <div class="invalid-feedback"><%= t('.user.errors.password') %></div>
+            </div>
+            <div class="form-group">
+              <%= fields.label :password, User.human_attribute_name(:password_confirmation) %>
+              <%= fields.password_field :password_confirmation, class: 'form-control text-center' %>
+              <div class="invalid-feedback"><%= t('.user.errors.password_confirmation') %></div>
+            </div>
           </p>
         </div>
       </div>
@@ -154,6 +263,8 @@
         // Formatting
         $('input[type="tel"]').mask('000-000-0000');
         $('input[type="sin"]').mask('000 000 000');
+        $('.input-amount').mask('# ##0,00', {reverse: true});
+
 
         // Amount tab
         let amount_slider = document.getElementById('amount_slider');

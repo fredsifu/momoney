@@ -32,13 +32,10 @@
 fr:
   helpers:
     actions: "Actions"
+    choices:
+      no: "Non"
+      yes: "Oui"
     error: "Erreur"
-    select:
-      account: "- Sélectionnez un compte ci-dessous -"
-      country: "- Sélectionnez un pays ci-dessous -"
-      purpose: "- Sélectionnez une raison ci-dessous -"
-      timezone: "- Sélectionnez un fuseau horaire ci-dessous -"
-      type: "- Sélectionnez un type ci-dessous -"
     links:
       back: "Retour"
       cancel: "Annuler"
@@ -49,6 +46,14 @@ fr:
       next: "Suivant"
       previous: "Précédent"
       show: "Voir"
+    select:
+      account: "- Sélectionnez un compte ci-dessous -"
+      country: "- Sélectionnez un pays ci-dessous -"
+      credit_appreciation: "- Sélectionnez une estimation ci-dessous -"
+      ownership: "- Sélectionnez votre statut ci-dessous -"
+      purpose: "- Sélectionnez une raison ci-dessous -"
+      timezone: "- Sélectionnez un fuseau horaire ci-dessous -"
+      type: "- Sélectionnez un type ci-dessous -"
     submit:
       create: "Créer"
       send: "Envoyer"
@@ -72,6 +77,15 @@ fr:
       address:
         one: "Adresse"
         other: "Adresses"
+      borrower_profile:
+        one: "Situation d'emprunt"
+        other: "Situations d'emprunt"
+      employment:
+        one: "Situation d'emploi"
+        other: "Situations d'emploi"
+      personal_loan:
+        one: "Prêt personnel"
+        other: "Prêts personnels"
       user_profile:
         one: "Profil utilisateur"
         other: "Profils utilisateur"
@@ -89,6 +103,31 @@ fr:
         latitude: "Latitude"
         created_at: "Créée le"
         updated_at: "Modifiée le"
+      borrower_profile:
+        assets: "Avoirs"
+        bankcruptcy: "Faillite récente?"
+        credit_appreciation: "Estimation du credit"
+        credit_appreciations:
+          poor: "Faible"
+          fair: "Moyen"
+          good: "Bon"
+          very_good: "Très bon"
+          excellent: "Excellent"
+        other_revenues: "Autres revenus"
+        ownership: "Statut de propriété"
+        ownerships:
+          owner: "Propriétaire"
+          tenant: "Locataire"
+        created_at: "Créé le"
+        updated_at: "Modifié le"
+      employment:
+        status: "Statut d'emploi"
+        since: "Depuis"
+        employer: "Employeur"
+        title: "Poste"
+        revenues: "Revenu d'emploi"
+        created_at: "Créé le"
+        updated_at: "Modifié le"
       personal_loan:
         amount: "Montant"
         purpose: "Raison"
@@ -160,6 +199,14 @@ fr:
           select: "Sélectionnez une raison"
       loan_amount:
         question: "Combien aimeriez-vous emprunter?"
+      user:
+        questions:
+          email: "À quelle adresse courriel voulez-vous être rejoint? Cette adresse vous servira pour vous connecter à votre compte."
+          password_html: "Saisissez votre mot de passe.<br>Si c'est votre première interaction avec nous, nous vous créerons un compte."
+        errors:
+          email: "Le courriel doit avoir le format nom@exemple.com."
+          password: "Le mot de passe doit comporter 8 caractères ou plus."
+          password_confirmation: "La confirmation de mot de passe n'est pas identique au mot de passe."
       user_profile:
         questions:
           fullname: "Quel est votre nom complet?"

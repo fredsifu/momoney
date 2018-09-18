@@ -32,13 +32,10 @@
 en:
   helpers:
     actions: "Actions"
+    choices:
+      no: "No"
+      yes: "Yes"
     error: "Error"
-    select:
-      account: "- Select an account below -"
-      country: "- Select a country below -"
-      purpose: "- Select a purpose below -"
-      timezone: "- Select a time zone below -"
-      type: "- Select a type below -"
     links:
       back: "Back"
       cancel: "Cancel"
@@ -49,6 +46,14 @@ en:
       next: "Next"
       previous: "Previous"
       show: "Show"
+    select:
+      account: "- Select an account below -"
+      country: "- Select a country below -"
+      credit_appreciation: "- Select an appreciation below -"
+      ownership: "- Select a status below -"
+      purpose: "- Select a purpose below -"
+      timezone: "- Select a time zone below -"
+      type: "- Select a type below -"
     submit:
       create: "Create"
       send: "Send"
@@ -72,6 +77,15 @@ en:
       address:
         one: "Address"
         other: "Addresses"
+      borrower_profile:
+        one: "Borrower Profile"
+        other: "Borrower Profiles"
+      employment:
+        one: "Employment"
+        other: "Employments"
+      personal_loan:
+        one: "Personal Loan"
+        other: "Personal Loans"
       user_profile:
         one: "User Profile"
         other: "User Profiles"
@@ -87,6 +101,31 @@ en:
         country_code: "Country"
         longitude: "Longitude"
         latitude: "Latitude"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      borrower_profile:
+        assets: "Assets"
+        bankcruptcy: "Recent Bankcruptcy?"
+        credit_appreciation: "Credit Appreciation"
+        credit_appreciations:
+          poor: "Poor"
+          fair: "Fair"
+          good: "Good"
+          very_good: "Very Good"
+          excellent: "Excellent"
+        other_revenues: "Other Revenues"
+        ownership: "Ownership Status"
+        ownerships:
+          owner: "Owner"
+          tenant: "Tenant"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      employment:
+        status: "Employment Status"
+        since: "Since"
+        employer: "Employer"
+        title: "Title"
+        revenues: "Revenues"
         created_at: "Created at"
         updated_at: "Updated at"
       personal_loan:
@@ -158,6 +197,14 @@ en:
           select: "Choose a purpose"
       loan_amount:
         question: "How much would you like to borrow?"
+      user:
+        questions:
+          email: "Which email address should be used to contact you? This email will be used to connect back to your account."
+          password_html: "Type in your password.<br>If it's your first time with us, we will create an account for you."
+        errors:
+          email: "Your email must be in the typical email format: name@example.com."
+          password: "Your password must contain at least 8 characters."
+          password_confirmation: "Password confirmation must match the password. It currently doesn't."
       user_profile:
         questions:
           fullname: "What is your full name?"

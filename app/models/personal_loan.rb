@@ -5,7 +5,8 @@ class PersonalLoan < ApplicationRecord
 
   def self.purposes_for_select
     purposes.map { |purpose, _|
-      [I18n.t("activerecord.attributes.#{model_name.i18n_key}.purposes.#{purpose}"), PersonalLoan.purposes[purpose]]
+      [I18n.t("activerecord.attributes.#{model_name.i18n_key}.purposes.#{purpose}"),
+       PersonalLoan.purposes[purpose]]
     }.to_h
   end
 
