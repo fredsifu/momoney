@@ -49,9 +49,6 @@ fr:
     select:
       account: "- Sélectionnez un compte ci-dessous -"
       country: "- Sélectionnez un pays ci-dessous -"
-      credit_appreciation: "- Sélectionnez une estimation ci-dessous -"
-      ownership: "- Sélectionnez votre statut ci-dessous -"
-      purpose: "- Sélectionnez une raison ci-dessous -"
       timezone: "- Sélectionnez un fuseau horaire ci-dessous -"
       type: "- Sélectionnez un type ci-dessous -"
     submit:
@@ -122,6 +119,12 @@ fr:
         updated_at: "Modifié le"
       employment:
         status: "Statut d'emploi"
+        statuses:
+          full_time_employee: "Emploi à temps plein"
+          part_time_employee: "Emploi à temps partiel"
+          self_employed: "Travail autonome"
+          seasonal_employee: "Emploi saisonnier"
+          unemployed: "Sans emploi"
         since: "Depuis"
         employer: "Employeur"
         title: "Poste"
@@ -184,41 +187,67 @@ fr:
     personal:
       nav: "Prêt personnel"
       page_title: "Prêt personnel"
-      page_lead: "Suivez les étapes jusqu'à la fin pour nous renseigner sur vos besoins."
-      loan_purpose:
-        question: "Quelle est la raison de votre demande de prêt?"
-        answers:
-          vacation: "Voyage ou Vacances"
-          debt_consolidation: "Consolidation de dettes"
-          credit_card_refinancing: "Refinancement de carte de crédit"
-          medical_expenses: "Dépenses médicales"
-          wedding: "Marriage"
-          moving_expenses: "Déménagement"
-          other: "Autre"
+      page_lead: "Suivez les étapes jusqu'à la fin pour nous renseigner sur vos besoins et votre situation."
+      borrower_profile:
         errors:
-          select: "Sélectionnez une raison"
-      loan_amount:
-        question: "Combien aimeriez-vous emprunter?"
+          assets: "SVP, saisissez un estimé de la valeur de vos avoirs (argent en banque, actions, propriétés et possessions)."
+          bankcruptcy: "SVP, spécifiez si vous avez fait faillite au cours des 7 dernières années."
+          credit_appreciation: "SVP, donnez-nous un estimé de votre cote de crédit ou de solvabilité."
+          other_revenues: "SVP, saisissez le montant des revenus provenant de sources autres que votre salaire (revenus de location ou d'entreprise par exemple)."
+          ownership: "SVP, spécifiez si vous êtes propriétaire ou locataire. Si vous habitez gracieusement chez quelqu'un (parent, ami ou autre), choisissez 'Locataire'."
+        questions:
+          assets: "À combien évaluez-vous vos avoirs?"
+          bankcruptcy: "Avez-vous déclaré faillite au cours des 7 dernières années?"
+          credit_appreciation: "À quel niveau évaluez-vous votre crédit?"
+          other_revenues: "À combien s'élèvent vos revenus autres que ceux issus de votre emploi?"
+          ownership: "Êtes-vous propriétaire d'une résidence ou êtes-vous locataire?"
+        select:
+          credit_appreciation: "- Sélectionnez un estimé ci-dessous -"
+          ownership: "- Sélectionnez un statut ci-dessous -"
+      employment:
+        errors:
+          employer: "SVP, saisissez le nom de votre employeur."
+          revenues: "SVP, saisissez votre salaire lié à cet emploi."
+          since: "SVP, spécifiez depuis quand vous êtes dans ce statut d'emploi."
+          status: "SVP, sélectionnez votre statut d'emploi."
+          title: "SVP, spécifiez le titre du poste que vous occupez."
+        questions:
+          employer: "Quel est le nom de votre employeur?"
+          revenues: "Combien gagnez-vous dans cet emploi?"
+          since: "Depuis quand êtes-vous dans ce statut d'emploi?"
+          status: "Quel est votre statut d'emploi?"
+          title: "Quel est le titre du poste que vous occupez?"
+        select:
+          status: "- Sélectionnez un statut d'emploi ci-dessous -"
+      personal_loan:
+        errors:
+          amount: "SVP, saisissez le montant que vous désirez emprunter."
+          purpose: "SVP, sélectionnez la raison de votre emprunt."
+        questions:
+          amount: "Combien aimeriez-vous emprunter?"
+          purpose: "Quelle est la raison de votre demande de prêt?"
+        select:
+          purpose: "- Sélectionnez une raison ci-dessous -"
       user:
+        errors:
+          email: "SVP, saisissez votre adresse courriel sous la forme suivante: nom@exemple.com"
+          password: "SVP, saisissez un mot de passe comportant au moins 8 caractères."
+          password_confirmation: "SVP, assurez-vous que la confirmation de mot de passe soit identique au mot de passe."
         questions:
           email: "À quelle adresse courriel voulez-vous être rejoint? Cette adresse vous servira pour vous connecter à votre compte."
           password_html: "Saisissez votre mot de passe.<br>Si c'est votre première interaction avec nous, nous vous créerons un compte."
-        errors:
-          email: "Le courriel doit avoir le format nom@exemple.com."
-          password: "Le mot de passe doit comporter 8 caractères ou plus."
-          password_confirmation: "La confirmation de mot de passe n'est pas identique au mot de passe."
       user_profile:
-        questions:
-          fullname: "Quel est votre nom complet?"
-          birthdate: "Quelle est votre date de naissance"
-          phone: "À quel numéro de téléphone voulez-vous être rejoint?"
-          sin: "Quel est votre numéro d'assurance sociale?"
         errors:
-          firstname_empty: "Prénom doit être rempli."
-          lastname_empty: "Nom doit être rempli."
-          eighteen_plus: "Doit être âgé(e) de 18 ans ou plus."
-          phone: "Numéro de téléphone doit être rempli."
-          sin: "Numéro d'assurance social doit être rempli."
+          birthdate: "SVP, sélectionnez ou saisissez votre date de naissance. Vous devez avoir 18 ans ou plus."
+          firstname: "SVP, saisissez votre prénom."
+          lastname: "SVP, saisissez votre nom de famille."
+          phone: "SVP, saisissez votre numéro de téléphone."
+          sin: "SVP, saisissez votre numéro d'assurance social (NAS)."
+        questions:
+          birthdate: "Quelle est votre date de naissance?"
+          fullname: "Quel est votre nom complet?"
+          phone: "À quel numéro de téléphone voulez-vous être rejoint?"
+          sin: "Quel est votre numéro d'assurance sociale (NAS)?"
   user_profiles:
     index:
       no_user_profiles_yet: "Aucun profil utilisateur jusqu'à maintenant"

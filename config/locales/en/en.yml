@@ -49,9 +49,6 @@ en:
     select:
       account: "- Select an account below -"
       country: "- Select a country below -"
-      credit_appreciation: "- Select an appreciation below -"
-      ownership: "- Select a status below -"
-      purpose: "- Select a purpose below -"
       timezone: "- Select a time zone below -"
       type: "- Select a type below -"
     submit:
@@ -122,6 +119,12 @@ en:
         updated_at: "Updated at"
       employment:
         status: "Employment Status"
+        statuses:
+          full_time_employee: "Full-Time Employee"
+          part_time_employee: "Part-Time Employee"
+          self_employed: "Self-Employed"
+          seasonal_employee: "Seasonal Employee"
+          unemployed: "Unemployed"
         since: "Since"
         employer: "Employer"
         title: "Title"
@@ -183,40 +186,66 @@ en:
       nav: "Personal Loan"
       page_title: "Personal Loan"
       page_lead: "Follow the steps until the end to tell us exactly what you need."
-      loan_purpose:
-        question: "For what purpose are your borrowing?"
-        answers:
-          vacation: "Trip or Vacation"
-          debt_consolidation: "Debt Consolidation"
-          credit_card_refinancing: "Credit Card Refinancing"
-          medical_expenses: "Medical Expenses"
-          wedding: "Wedding"
-          moving_expenses: "Moving Expenses"
-          other: "Other"
+      borrower_profile:
         errors:
-          select: "Choose a purpose"
-      loan_amount:
-        question: "How much would you like to borrow?"
+          assets: "Please, give us a rough estimate of the value of the things you own (money in the bank, stocks, properties and possessions)."
+          bankcruptcy: "Please, specify if you filed for bankcruptcy within the last 7 years."
+          credit_appreciation: "Please, give us your appreciation of your credit score."
+          other_revenues: "Please, specify your revenues coming from sources other than your salary (rent or capital gains for example)."
+          ownership: "Please, choose whether you own at least one property or you rent. If you live under a roof for free (at your parents or friend's for example), select 'Tenant'."
+        questions:
+          assets: "Roughly how much is everything you own worth?"
+          bankcruptcy: "Did you file for bankcruptcy with the last 7 years?"
+          credit_appreciation: "In your mind, how good is your credit score?"
+          other_revenues: "How much do you earn other than your salary?"
+          ownership: "Do you own a property or do you rent?"
+        select:
+          credit_appreciation: "- Select a appreciation below -"
+          ownership: "- Select an ownership status below -"
+      employment:
+        errors:
+          employer: "Please, fill in the name of your employer."
+          revenues: "Please, specify your salary in this job."
+          since: "Please, select the date whence your job status last changed."
+          status: "Please, select your current employment status."
+          title: "Please, fill in your job title."
+        questions:
+          employer: "What is the name of your current employer?"
+          revenues: "How much do you earn in this job?"
+          since: "Since when are you in this job status?"
+          status: "What is your employment status?"
+          title: "What is the title of your current job?"
+        select:
+          status: "- Select an employment status below -"
+      personal_loan:
+        errors:
+          amount: "SVP, specify the amount you wish to borrow."
+          purpose: "SVP, choose the purpose of your loan."
+        questions:
+          amount: "How much would you like to borrow?"
+          purpose: "For what purpose are you borrowing?"
+        select:
+          purpose: "- Select a purpose below -"
       user:
+        errors:
+          email: "Please, fill in your email in the typical email format: name@example.com"
+          password: "Please, fill in a password containing at least 8 characters."
+          password_confirmation: "Please, make sure the password confirmation matches the password. It currently doesn't."
         questions:
           email: "Which email address should be used to contact you? This email will be used to connect back to your account."
           password_html: "Type in your password.<br>If it's your first time with us, we will create an account for you."
-        errors:
-          email: "Your email must be in the typical email format: name@example.com."
-          password: "Your password must contain at least 8 characters."
-          password_confirmation: "Password confirmation must match the password. It currently doesn't."
       user_profile:
+        errors:
+          birthdate: "Please, select your age. You must be at least 18 years old."
+          firstname: "Please, fill in your first name."
+          lastname: "Please, fill in your last name."
+          phone: "Please, fill in your phone number."
+          sin: "Please, fill in your social insurance number (SIN)."
         questions:
           fullname: "What is your full name?"
           birthdate: "What is your date of birth?"
           phone: "Which phone number should be used to reach you?"
-          sin: "What is your social insurance number?"
-        errors:
-          firstname_empty: "First name must be filled."
-          lastname_empty: "Last name must be filled."
-          eighteen_plus: "Must be at least 18 years old."
-          phone: "Phone number must be filled."
-          sin: "Social insurance number must be filled."
+          sin: "What is your social insurance number (SIN)?"
   user_profiles:
     index:
       no_user_profiles_yet: "No user profiles yet"
