@@ -243,11 +243,13 @@ fr:
           lastname: "SVP, saisissez votre nom de famille."
           phone: "SVP, saisissez votre numéro de téléphone."
           sin: "SVP, saisissez votre numéro d'assurance social (NAS)."
+          address: "SVP, remplissez toutes les cases requises pour compléter votre adresse."
         questions:
           birthdate: "Quelle est votre date de naissance?"
           fullname: "Quel est votre nom complet?"
           phone: "À quel numéro de téléphone voulez-vous être rejoint?"
           sin: "Quel est votre numéro d'assurance sociale (NAS)?"
+          address: "Quelle est votre adresse actuelle?"
   user_profiles:
     index:
       no_user_profiles_yet: "Aucun profil utilisateur jusqu'à maintenant"

@@ -39,7 +39,7 @@
         <p>
           <h3 id="amount_value">1000</h3>
           <div id="amount_slider" class="noUi-target noUi-horizontal"></div>
-          <%= form.hidden_field :loan_amount, value: 1000 %>
+          <%= form.hidden_field :amount, value: 1000 %>
         </p>
       </div>
     </div>
@@ -111,6 +111,21 @@
         </div>
       </div>
     </div>
+
+    <%= fields.fields :address do |address_fields| %>
+
+      <div class="wiz_tab">
+        <div class="card text-center">
+          <div class="card-body">
+            <h2 class="card-title"><%= t('.user_profile.questions.address') %></h2>
+            <p>
+              <%= render 'addresses/form_fields', fields: address_fields %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
 
   <% end %>
 
@@ -223,7 +238,7 @@
           <h2 class="card-title"><%= t('.borrower_profile.questions.ownership') %></h2>
           <p>
             <div class="form-group">
-              <%= form.select :ownership,
+              <%= fields.select :ownership,
                               options_for_select(BorrowerProfile.ownerships_for_select),
                               { include_blank: t('.borrower_profile.select.ownership') },
                               { class: 'form-control select2', style: 'width: 100%;',
@@ -241,7 +256,7 @@
           <h2 class="card-title"><%= t('.borrower_profile.questions.credit_appreciation') %></h2>
           <p>
             <div class="form-group">
-              <%= form.select :credit_appreciation,
+              <%= fields.select :credit_appreciation,
                               options_for_select(BorrowerProfile.credit_appreciations_for_select),
                               { include_blank: t('.borrower_profile.select.credit_appreciation') },
                               { class: 'form-control select2', style: 'width: 100%;',
