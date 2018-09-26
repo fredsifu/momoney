@@ -161,6 +161,8 @@ GEM
     rails-assets-jquery-ui (1.12.1)
       rails-assets-jquery (>= 1.6)
     rails-assets-jquery-ui-touch-punch-improved (0.3.1)
+    rails-assets-jquery.validation (1.18.0)
+      rails-assets-jquery (>= 1.7.2)
     rails-assets-nouislider (11.0.3)
     rails-assets-select2 (4.0.5)
     rails-assets-smartwizard (4.3.1)
@@ -264,6 +266,7 @@ DEPENDENCIES
   rails-assets-jquery!
   rails-assets-jquery-ui!
   rails-assets-jquery-ui-touch-punch-improved!
+  rails-assets-jquery.validation!
   rails-assets-nouislider!
   rails-assets-select2!
   rails-assets-smartwizard!

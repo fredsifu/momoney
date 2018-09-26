@@ -1,45 +1,53 @@
-<div class="text-left">
 <div class="form-row">
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-3">
     <%= fields.label :street_number %>
-    <%= fields.text_field :street_number, class: 'form-control' %>
+    <%= fields.text_field :street_number, class: 'form-control', required: true %>
+    <div class="invalid-feedback"></div>
   </div>
 
-  <div class="form-group col-md-8">
+  <div class="form-group col-md-6">
     <%= fields.label :route %>
-    <%= fields.text_field :route, class: 'form-control' %>
+    <%= fields.text_field :route, class: 'form-control', required: true %>
+    <div class="invalid-feedback"></div>
+  </div>
+
+  <div class="form-group col-md-3">
+    <%= fields.label :unit_number %>
+    <%= fields.text_field :unit_number, class: 'form-control' %>
+    <div class="invalid-feedback"></div>
   </div>
 </div>
 
 <div class="form-group">
   <%= fields.label :other_line %>
   <%= fields.text_field :other_line, class: 'form-control' %>
-</div>
-
-<div class="form-group">
-  <%= fields.label :unit_number %>
-  <%= fields.text_field :unit_number, class: 'form-control' %>
+  <div class="invalid-feedback"></div>
 </div>
 
 <div class="form-row">
   <div class="form-group col-md-4">
     <%= fields.label :city %>
-    <%= fields.text_field :city, class: 'form-control' %>
+    <%= fields.text_field :city, class: 'form-control', required: true %>
+    <div class="invalid-feedback"></div>
   </div>
 
   <div class="form-group col-md-4">
     <%= fields.label :state_province_region %>
-    <%= fields.text_field :state_province_region, class: 'form-control' %>
+    <%= fields.text_field :state_province_region, class: 'form-control', required: true %>
+    <div class="invalid-feedback"></div>
   </div>
 
   <div class="form-group col-md-4">
     <%= fields.label :country_code %><br>
-    <%= fields.country_select :country_code, { include_blank: t('helpers.select.country'), priority_countries: %w[CA US FR] }, { class: 'form-control select2', data: { attribute: "value" } } %>
+    <%= fields.country_select :country_code,
+                              { selected: 'CA', include_blank: t('helpers.select.country'), priority_countries: %w[CA US FR] },
+                              { class: 'form-control select2', data: { attribute: "value" }, required: true } %>
+    <div class="invalid-feedback"></div>
   </div>
 </div>
 
 <div class="form-group">
   <%= fields.label :zip_postal_code %>
-  <%= fields.text_field :zip_postal_code, class: 'form-control' %>
-</div>
+  <%= fields.text_field :zip_postal_code, class: 'form-control', 'data-format': 'A0A 0A0', required: true %>
+  <div class="invalid-feedback"></div>
 </div>

@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery
 //= require jquery.mask
+//= require jquery.validation
 //= require bootstrap
 //= require select2
 //= require nouislider

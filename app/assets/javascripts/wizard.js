@@ -1,5 +1,5 @@
 class Wizard {
-    constructor(form, tabs, indicators, progressBar, btnNext, btnPrevious, btnSubmit) {
+    constructor(form, tabs, indicators, progressBar, btnNext, btnPrevious, btnSubmit, validation) {
         this.form = form;
         this.tabs = tabs;
         this.indicators = indicators;
@@ -9,6 +9,7 @@ class Wizard {
         this.btnNext = btnNext;
         this.btnPrevious = btnPrevious;
         this.btnSubmit = btnSubmit;
+        this.validation = validation;
 
         if (this.btnNext){
             // Learning point:
@@ -20,6 +21,12 @@ class Wizard {
         }
         if (this.btnSubmit) {
             this.btnSubmit.bind("click", this.submit.bind(this));
+        }
+
+        if (this.form) {
+            this.form.find('input').on('input', this.resetInvalidStatus);
+            this.form.find('textarea').on('input', this.resetInvalidStatus);
+            this.form.find('select').on('change', this.resetInvalidStatus);
         }
 
         this.updateCurrentTab();
@@ -39,13 +46,16 @@ class Wizard {
     validateStep() {
         let valid = true;
         let inputs = this.tabs.eq(this.currentTab).find("input, select, textarea");//.filter('[required]:visible');
-        inputs.each(function (i) {
-            if ($(this).val() === "") {
-                $(this).addClass("is-invalid");
+        inputs.each(function () {
+            if (!$(this).valid()) { // uses jquery.validation.js : https://jqueryvalidation.org/documentation/
                 valid = false;
             }
         });
         return valid;
+    }
+
+    resetInvalidStatus() {
+        $(this).removeClass('is-invalid');
     }
 
     updateButtonsVisibility() {
@@ -97,6 +107,12 @@ class Wizard {
         this.tabs.eq(this.currentTab).show();
     }
 
+    updateStepIndicators() {
+        // This function removes the "active" class of all steps...
+        this.indicators.removeClass('active');
+        this.indicators.eq(this.currentTab).addClass('active');
+    }
+
     submit() {
         // Submit on last step only
         if (this.currentTab >= this.tabCount - 1) {
@@ -118,14 +134,4 @@ class Wizard {
         this.btnSubmit.hide();
         this.form.submit();
     }
-}
-
-function wiz_fixStepIndicator(n) {
-    // This function removes the "active" class of all steps...
-    let i, steps = document.getElementsByClassName("wiz_step");
-    for (i = 0; i < steps.length; i++) {
-        steps[i].className = steps[i].className.replace(" active", "");
-    }
-    //... and adds the "active" class to the current step:
-    steps[n].className += " active";
 }

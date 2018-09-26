@@ -94,6 +94,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-assets-jquery (v3.3.1, ruby-2.4.4-p296) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-assets-jquery-ui (v1.12.1, ruby-2.4.4-p296) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-assets-jquery-ui-touch-punch-improved (v0.3.1, ruby-2.4.4-p296) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-assets-jquery.validation (v1.18.0, ruby-2.4.4-p296) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-assets-nouislider (v11.0.3, ruby-2.4.4-p296) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-assets-select2 (v4.0.5, ruby-2.4.4-p296) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-assets-smartwizard (v4.3.1, ruby-2.4.4-p296) [gem]" level="application" />

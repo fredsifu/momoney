@@ -241,7 +241,7 @@ en:
           lastname: "Please, fill in your last name."
           phone: "Please, fill in your phone number."
           sin: "Please, fill in your social insurance number (SIN)."
-          address: "Please, fill in all required fields to complete your address."
+          address: "Please, fill in this required field to complete your address."
         questions:
           fullname: "What is your full name?"
           birthdate: "What is your date of birth?"
