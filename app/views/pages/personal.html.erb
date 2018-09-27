@@ -121,8 +121,10 @@
         <div class="card text-center">
           <div class="card-body">
             <h2 class="card-title"><%= t('.user_profile.questions.address') %></h2>
-            <p class="text-left">
-              <%= render 'addresses/form_fields', fields: address_fields %>
+            <p>
+              <div class="text-left">
+                <%= render 'addresses/form_fields', fields: address_fields %>
+              </div>
             </p>
           </div>
         </div>
@@ -369,93 +371,102 @@
 
         // jQuery Validation
         let validation = {
-            debug: true,
             rules: {
-                personal_loan_purpose: "required",
-                personal_loan_amount: "required",
-                personal_loan_user_profile_firstname: "required",
-                personal_loan_user_profile_lastname: "required",
-                personal_loan_user_profile_birthdate: "required",
-                personal_loan_user_profile_phone: "required",
-                personal_loan_user_profile_sin: "required",
-                personal_loan_user_profile_address_street_number: "required",
-                personal_loan_user_profile_address_route: "required",
-                personal_loan_user_profile_address_city: "required",
-                personal_loan_user_profile_address_state_province_region: "required",
-                personal_loan_user_profile_address_country_code: "required",
-                personal_loan_user_profile_address_zip_postal_code: "required",
-                personal_loan_employment_status: "required",
-                personal_loan_employment_since: "required",
-                personal_loan_employment_employer: {
+                'personal_loan[purpose]': "required",
+                'personal_loan[amount]': "required",
+                'personal_loan[user_profile][firstname]': "required",
+                'personal_loan[user_profile][lastname]': "required",
+                'personal_loan[user_profile][birthdate]': "required",
+                'personal_loan[user_profile][phone]': "required",
+                'personal_loan[user_profile][sin]': "required",
+                'personal_loan[user_profile][address][street_number]': "required",
+                'personal_loan[user_profile][address][route]': "required",
+                'personal_loan[user_profile][address][city]': "required",
+                'personal_loan[user_profile][address][state_province_region]': "required",
+                'personal_loan[user_profile][address][country_code]': "required",
+                'personal_loan[user_profile][address][zip_postal_code]': {
+                    required: true,
+                    "postalCodeCA": {
+                        depends: function () {
+                            return $('#personal_loan_user_profile_address_country_code').val() === 'CA';
+                        }
+                    }
+                },
+                'personal_loan[employment][status]': "required",
+                'personal_loan[employment][since]': "required",
+                'personal_loan[employment][employer]': {
                     required: {
                         depends: function () {
                             return $('#personal_loan_employment_status').val() !== '4';
                         }
                     }
                 },
-                personal_loan_employment_title: {
+                'personal_loan[employment][title]': {
                     required: {
                         depends: function () {
                             return $('#personal_loan_employment_status').val() !== '4';
                         }
                     }
                 },
-                personal_loan_employment_revenues: {
+                'personal_loan[employment][revenues]': {
                     required: {
                         depends: function () {
                             return $('#personal_loan_employment_status').val() !== '4';
                         }
                     }
                 },
-                personal_loan_borrower_profile_bankcruptcy: "required",
-                personal_loan_borrower_profile_ownership: "required",
-                personal_loan_borrower_profile_credit_appreciation: "required",
-                personal_loan_borrower_profile_other_revenues: "required",
-                personal_loan_borrower_profile_assets: "required",
-                personal_loan_user_username: {
+                'personal_loan[borrower_profile][bankcruptcy]': "required",
+                'personal_loan[borrower_profile][ownership]': "required",
+                'personal_loan[borrower_profile][credit_appreciation]': "required",
+                'personal_loan[borrower_profile][other_revenues]': "required",
+                'personal_loan[borrower_profile][assets]': "required",
+                'personal_loan[user][username]': {
                     required: true,
                     email: true
                 },
-                personal_loan_user_password: {
+                'personal_loan[user][password]': {
                     required: true,
                     minlength: 8
                 },
-                personal_loan_user_password_confirmation: {
+                'personal_loan[user][password_confirmation]': {
                     required: true,
                     minlength: 8,
                     equalTo: "#personal_loan_user_password"
                 }
             },
             messages: {
-                personal_loan_purpose: { required: "<%= t('.personal_loan.errors.purpose') %>" },
-                personal_loan_amount: "<%= t('.personal_loan.errors.amount') %>",
-                personal_loan_user_profile_firstname: "<%= t('.user_profile.errors.firstname') %>",
-                personal_loan_user_profile_lastname: "<%= t('.user_profile.errors.lastname') %>",
-                personal_loan_user_profile_birthdate: "<%= t('.user_profile.errors.birthdate') %>",
-                personal_loan_user_profile_phone: "<%= t('.user_profile.errors.phone') %>",
-                personal_loan_user_profile_sin: "<%= t('.user_profile.errors.sin') %>",
-                personal_loan_user_profile_address_street_number: "<%= t('.user_profile.errors.address') %>",
-                personal_loan_user_profile_address_route: "<%= t('.user_profile.errors.address') %>",
-                personal_loan_user_profile_address_city: "<%= t('.user_profile.errors.address') %>",
-                personal_loan_user_profile_address_state_province_region: "<%= t('.user_profile.errors.address') %>",
-                personal_loan_user_profile_address_country_code: "<%= t('.user_profile.errors.address') %>",
-                personal_loan_user_profile_address_zip_postal_code: "<%= t('.user_profile.errors.address') %>",
-                personal_loan_employment_status: "<%= t('.employment.errors.status') %>",
-                personal_loan_employment_since: "<%= t('.employment.errors.since') %>",
-                personal_loan_employment_employer: "<%= t('.employment.errors.employer') %>",
-                personal_loan_employment_title: "<%= t('.employment.errors.title') %>",
-                personal_loan_employment_revenues: "<%= t('.employment.errors.revenues') %>",
-                personal_loan_borrower_profile_bankcruptcy: "<%= t('.borrower_profile.errors.bankcruptcy') %>",
-                personal_loan_borrower_profile_ownership: "<%= t('.borrower_profile.errors.ownership') %>",
-                personal_loan_borrower_profile_credit_appreciation: "<%= t('.borrower_profile.errors.credit_appreciation') %>",
-                personal_loan_borrower_profile_other_revenues: "<%= t('.borrower_profile.errors.other_revenues') %>",
-                personal_loan_borrower_profile_assets: "<%= t('.borrower_profile.errors.assets') %>",
-                personal_loan_user_email: "<%= t('.user.errors.email') %>",
-                personal_loan_user_password: {
+                'personal_loan[purpose]': { required: "<%= t('.personal_loan.errors.purpose') %>" },
+                'personal_loan[amount]': "<%= t('.personal_loan.errors.amount') %>",
+                'personal_loan[user_profile][firstname]': "<%= t('.user_profile.errors.firstname') %>",
+                'personal_loan[user_profile][lastname]': "<%= t('.user_profile.errors.lastname') %>",
+                'personal_loan[user_profile][birthdate]': "<%= t('.user_profile.errors.birthdate') %>",
+                'personal_loan[user_profile][phone]': "<%= t('.user_profile.errors.phone') %>",
+                'personal_loan[user_profile][sin]': "<%= t('.user_profile.errors.sin') %>",
+                'personal_loan[user_profile][address][street_number]': "<%= t('.user_profile.errors.address') %>",
+                'personal_loan[user_profile][address][route]': "<%= t('.user_profile.errors.address') %>",
+                'personal_loan[user_profile][address][city]': "<%= t('.user_profile.errors.address') %>",
+                'personal_loan[user_profile][address][state_province_region]': "<%= t('.user_profile.errors.address') %>",
+                'personal_loan[user_profile][address][country_code]': "<%= t('.user_profile.errors.address') %>",
+                'personal_loan[user_profile][address][zip_postal_code]': {
+                    required: "<%= t('.user_profile.errors.address') %>",
+                    'postalCodeCA': "<%= t('.user_profile.errors.addresses.zip_code') %>",
+                },
+                'personal_loan[employment][status]': "<%= t('.employment.errors.status') %>",
+                'personal_loan[employment][since]': "<%= t('.employment.errors.since') %>",
+                'personal_loan[employment][employer]': "<%= t('.employment.errors.employer') %>",
+                'personal_loan[employment][title]': "<%= t('.employment.errors.title') %>",
+                'personal_loan[employment][revenues]': "<%= t('.employment.errors.revenues') %>",
+                'personal_loan[borrower_profile][bankcruptcy]': "<%= t('.borrower_profile.errors.bankcruptcy') %>",
+                'personal_loan[borrower_profile][ownership]': "<%= t('.borrower_profile.errors.ownership') %>",
+                'personal_loan[borrower_profile][credit_appreciation]': "<%= t('.borrower_profile.errors.credit_appreciation') %>",
+                'personal_loan[borrower_profile][other_revenues]': "<%= t('.borrower_profile.errors.other_revenues') %>",
+                'personal_loan[borrower_profile][assets]': "<%= t('.borrower_profile.errors.assets') %>",
+                'personal_loan[user][email]': "<%= t('.user.errors.email') %>",
+                'personal_loan[user][password]': {
                     required: "<%= t('.user.errors.password') %>",
                     minlength: "<%= t('.user.errors.password') %>",
                 },
-                personal_loan_user_password_confirmation: {
+                'personal_loan[user][password_confirmation]': {
                     required: "<%= t('.user.errors.password_confirmation') %>",
                     minlength: "<%= t('.user.errors.password_confirmation') %>",
                     equalTo: "<%= t('.user.errors.password_confirmation') %>"

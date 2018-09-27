@@ -11,11 +11,12 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require activestorage
 //= require turbolinks
-//= require jquery
-//= require jquery.mask
-//= require jquery.validation
+//= require jquery-mask/jquery.mask
+//= require jquery-validate/jquery.validate
+//= require jquery-validate/additional-methods
 //= require bootstrap
 //= require select2
 //= require nouislider

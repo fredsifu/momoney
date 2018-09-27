@@ -243,7 +243,9 @@ fr:
           lastname: "SVP, saisissez votre nom de famille."
           phone: "SVP, saisissez votre numéro de téléphone."
           sin: "SVP, saisissez votre numéro d'assurance social (NAS)."
-          address: "SVP, remplissez toutes les cases requises pour compléter votre adresse."
+          address: "Cette case est requise pour compléter votre adresse."
+          addresses:
+            zip_code: "SVP, saisissez un code postal sous la forme A1A 1A1."
         questions:
           birthdate: "Quelle est votre date de naissance?"
           fullname: "Quel est votre nom complet?"

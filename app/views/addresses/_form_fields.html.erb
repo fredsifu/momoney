@@ -1,53 +1,53 @@
 <div class="form-row">
   <div class="form-group col-md-3">
-    <%= fields.label :street_number %>
-    <%= fields.text_field :street_number, class: 'form-control', required: true %>
+    <%= fields.label :street_number, Address.human_attribute_name(:street_number) %>
+    <%= fields.text_field :street_number, class: 'form-control' %>
     <div class="invalid-feedback"></div>
   </div>
 
   <div class="form-group col-md-6">
-    <%= fields.label :route %>
-    <%= fields.text_field :route, class: 'form-control', required: true %>
+    <%= fields.label :route, Address.human_attribute_name(:route) %>
+    <%= fields.text_field :route, class: 'form-control' %>
     <div class="invalid-feedback"></div>
   </div>
 
   <div class="form-group col-md-3">
-    <%= fields.label :unit_number %>
+    <%= fields.label :unit_number, Address.human_attribute_name(:unit_number) %>
     <%= fields.text_field :unit_number, class: 'form-control' %>
     <div class="invalid-feedback"></div>
   </div>
 </div>
 
 <div class="form-group">
-  <%= fields.label :other_line %>
+  <%= fields.label :other_line, Address.human_attribute_name(:other_line) %>
   <%= fields.text_field :other_line, class: 'form-control' %>
   <div class="invalid-feedback"></div>
 </div>
 
 <div class="form-row">
   <div class="form-group col-md-4">
-    <%= fields.label :city %>
-    <%= fields.text_field :city, class: 'form-control', required: true %>
+    <%= fields.label :city, Address.human_attribute_name(:city) %>
+    <%= fields.text_field :city, class: 'form-control' %>
     <div class="invalid-feedback"></div>
   </div>
 
   <div class="form-group col-md-4">
-    <%= fields.label :state_province_region %>
-    <%= fields.text_field :state_province_region, class: 'form-control', required: true %>
+    <%= fields.label :state_province_region, Address.human_attribute_name(:state_province_region) %>
+    <%= fields.text_field :state_province_region, class: 'form-control' %>
     <div class="invalid-feedback"></div>
   </div>
 
   <div class="form-group col-md-4">
-    <%= fields.label :country_code %><br>
+    <%= fields.label :country_code, Address.human_attribute_name(:country_code) %><br>
     <%= fields.country_select :country_code,
                               { selected: 'CA', include_blank: t('helpers.select.country'), priority_countries: %w[CA US FR] },
-                              { class: 'form-control select2', data: { attribute: "value" }, required: true } %>
+                              { class: 'form-control select2', style: 'width: 100%;', data: { attribute: "value" } } %>
     <div class="invalid-feedback"></div>
   </div>
 </div>
 
 <div class="form-group">
-  <%= fields.label :zip_postal_code %>
-  <%= fields.text_field :zip_postal_code, class: 'form-control', 'data-format': 'A0A 0A0', required: true %>
+  <%= fields.label :zip_postal_code, Address.human_attribute_name(:zip_postal_code) %>
+  <%= fields.text_field :zip_postal_code, class: 'form-control', 'data-mask': 'A0A 0A0' %>
   <div class="invalid-feedback"></div>
 </div>
