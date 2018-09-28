@@ -240,10 +240,13 @@ en:
           firstname: "Please, fill in your first name."
           lastname: "Please, fill in your last name."
           phone: "Please, fill in your phone number."
-          sin: "Please, fill in your social insurance number (SIN)."
+          sin: "Please, fill in a valid social insurance number (SIN)."
           address: "Please, fill in this required field to complete your address."
           addresses:
-            zip_code: "Please, fill in the zip code in the format A1A 1A1."
+            provinceCA: "Please, fill in the province with its 2-letter code."
+            stateUS: "Please, fill in the state with its 2-letter code."
+            postalCodeCA: "Please, fill in the postal code in the format A1A 1A1."
+            zipcodeUS: "Please, fill in the zip code in the format 12345."
         questions:
           fullname: "What is your full name?"
           birthdate: "What is your date of birth?"

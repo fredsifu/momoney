@@ -370,7 +370,7 @@
         let form = $('#wiz_form');
 
         // jQuery Validation
-        let validation = {
+        form.validate({
             rules: {
                 'personal_loan[purpose]': "required",
                 'personal_loan[amount]': "required",
@@ -378,17 +378,57 @@
                 'personal_loan[user_profile][lastname]': "required",
                 'personal_loan[user_profile][birthdate]': "required",
                 'personal_loan[user_profile][phone]': "required",
-                'personal_loan[user_profile][sin]': "required",
+                'personal_loan[user_profile][sin]': {
+                    required: true,
+                    "canadianSIN": true
+                },
                 'personal_loan[user_profile][address][street_number]': "required",
                 'personal_loan[user_profile][address][route]': "required",
                 'personal_loan[user_profile][address][city]': "required",
-                'personal_loan[user_profile][address][state_province_region]': "required",
+                'personal_loan[user_profile][address][state_province_region]': {
+                    required: true,
+                    "provinceCA": {
+                        depends: function () {
+                            return $('#personal_loan_user_profile_address_country_code').val() === 'CA';
+                        }
+                    },
+                    "stateUS": {
+                        depends: function () {
+                            return $('#personal_loan_user_profile_address_country_code').val() === 'US';
+                        }
+                    }
+                },
                 'personal_loan[user_profile][address][country_code]': "required",
                 'personal_loan[user_profile][address][zip_postal_code]': {
                     required: true,
+                    "postalCodeBR": {
+                        depends: function () {
+                            return $('#personal_loan_user_profile_address_country_code').val() === 'BR';
+                        }
+                    },
                     "postalCodeCA": {
                         depends: function () {
                             return $('#personal_loan_user_profile_address_country_code').val() === 'CA';
+                        }
+                    },
+                    "postalcodeIT": {
+                        depends: function () {
+                            return $('#personal_loan_user_profile_address_country_code').val() === 'IT';
+                        }
+                    },
+                    "postalcodeNL": {
+                        depends: function () {
+                            return $('#personal_loan_user_profile_address_country_code').val() === 'NL';
+                        }
+                    },
+                    "postcodeUK": {
+                        depends: function () {
+                            return $('#personal_loan_user_profile_address_country_code').val() === 'UK';
+                        }
+                    },
+                    "zipcodeUS": {
+                        depends: function () {
+                            return $('#personal_loan_user_profile_address_country_code').val() === 'US';
                         }
                     }
                 },
@@ -445,11 +485,16 @@
                 'personal_loan[user_profile][address][street_number]': "<%= t('.user_profile.errors.address') %>",
                 'personal_loan[user_profile][address][route]': "<%= t('.user_profile.errors.address') %>",
                 'personal_loan[user_profile][address][city]': "<%= t('.user_profile.errors.address') %>",
-                'personal_loan[user_profile][address][state_province_region]': "<%= t('.user_profile.errors.address') %>",
+                'personal_loan[user_profile][address][state_province_region]': {
+                    required: "<%= t('.user_profile.errors.address') %>",
+                    "provinceCA": "<%= t('.user_profile.errors.addresses.provinceCA') %>",
+                    "stateUS": "<%= t('.user_profile.errors.addresses.stateUS') %>"
+                },
                 'personal_loan[user_profile][address][country_code]': "<%= t('.user_profile.errors.address') %>",
                 'personal_loan[user_profile][address][zip_postal_code]': {
                     required: "<%= t('.user_profile.errors.address') %>",
-                    'postalCodeCA': "<%= t('.user_profile.errors.addresses.zip_code') %>",
+                    "postalCodeCA": "<%= t('.user_profile.errors.addresses.postalCodeCA') %>",
+                    "zipcodeUS": "<%= t('.user_profile.errors.addresses.zipcodeUS') %>"
                 },
                 'personal_loan[employment][status]': "<%= t('.employment.errors.status') %>",
                 'personal_loan[employment][since]': "<%= t('.employment.errors.since') %>",
@@ -486,12 +531,9 @@
             unhighlight: function (element, errorClass, validClass) {
                 $(element).removeClass("is-invalid");
             }
-        };
+        });
 
-        let validator = form.validate(validation);
-        console.log(validator);
-
-        let wizard = new Wizard(form, $('.wiz_tab'), null, $('.wiz_progress'), $('#nextBtn'), $('#prevBtn'), $('#submitBtn'), validation);
+        let wizard = new Wizard(form, $('.wiz_tab'), null, $('.wiz_progress'), $('#nextBtn'), $('#prevBtn'), $('#submitBtn'));
 
 
         // Formatting

@@ -242,10 +242,13 @@ fr:
           firstname: "SVP, saisissez votre prénom."
           lastname: "SVP, saisissez votre nom de famille."
           phone: "SVP, saisissez votre numéro de téléphone."
-          sin: "SVP, saisissez votre numéro d'assurance social (NAS)."
+          sin: "SVP, saisissez un numéro d'assurance social (NAS) valide."
           address: "Cette case est requise pour compléter votre adresse."
           addresses:
-            zip_code: "SVP, saisissez un code postal sous la forme A1A 1A1."
+            provinceCA: "SVP, saisissez le code de 2 lettres de la province."
+            stateUS: "SVP, saisissez le code de 2 lettres de l'état."
+            postalCodeCA: "SVP, saisissez un code postal sous la forme A1A 1A1."
+            zipcodeUS: "SVP, saisissez un code postal sous la forme 12345."
         questions:
           birthdate: "Quelle est votre date de naissance?"
           fullname: "Quel est votre nom complet?"

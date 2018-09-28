@@ -1,5 +1,5 @@
 class Wizard {
-    constructor(form, tabs, indicators, progressBar, btnNext, btnPrevious, btnSubmit, validation) {
+    constructor(form, tabs, indicators, progressBar, btnNext, btnPrevious, btnSubmit) {
         this.form = form;
         this.tabs = tabs;
         this.indicators = indicators;
@@ -9,7 +9,6 @@ class Wizard {
         this.btnNext = btnNext;
         this.btnPrevious = btnPrevious;
         this.btnSubmit = btnSubmit;
-        this.validation = validation;
 
         if (this.btnNext){
             // Learning point:

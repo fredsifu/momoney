@@ -257,6 +257,50 @@ $.validator.addMethod( "cifES", function( value, element ) {
 }, "Please specify a valid CIF number." );
 
 /*
+ * Canadian social insurance number (SIN)
+ */
+$.validator.addMethod( "canadianSIN", function ( value ) {
+
+    // Removing special characters from value
+    value = value.replace( /([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g, "" );
+
+    // Checking value to have 9 digits only
+    if ( value.length !== 9 ) {
+        return false;
+    }
+
+	var valid, X = 0, Y = 0, L = 0, T = 0, H = 0, rounded, sum, difference;
+
+	for ( var i = 0; i < 4; i++ ) {
+		L = i * 2 + 1;
+		X += eval( value.substring( L - 1, L ) );
+	}
+
+	for ( var z = 1; z < 5; z++ ) {
+		T = z * 2;
+		H = eval( value.substring( T - 1, T ) ) * 2 + '';
+		if ( H.length === 2 ) {
+			Y += parseInt( H.substring( 0, 1 ) ) + parseInt( H.substring( 1, 2 ) );
+		}
+		else {
+			Y += parseInt( H );
+		}
+	}
+
+	sum = X + Y;
+	rounded = Math.ceil( sum / 10 ) * 10;
+	difference = rounded - sum;
+
+	valid = (difference === parseInt( value.substr( 8, 1 ) ));
+	// Could warn to check for expiry date on temporary status (9 as first digit) with following line
+	// parseInt( value.substr( 0, 1 ) ) === 9
+
+	return valid;
+
+}, "Please specify a valid SIN number." );
+
+
+/*
  * Brazillian CPF number (Cadastrado de Pessoas Físicas) is the equivalent of a Brazilian tax registration number.
  * CPF numbers have 11 digits in total: 9 numbers followed by 2 check numbers that are being used for validation.
  */
@@ -1073,6 +1117,41 @@ $.validator.addMethod( "stateUS", function( value, element, options ) {
 	regex = caseSensitive ? new RegExp( regex ) : new RegExp( regex, "i" );
 	return this.optional( element ) || regex.test( value );
 }, "Please specify a valid state" );
+
+/* Validates canadian Provinces and/or Territories inspired by @jdforsythe
+ * Can be case insensitive or require capitalization - default is case insensitive
+ * Can include canadian Territories or not - default does
+ *
+ * Usage examples:
+ *
+ *  This is the default - case insensitive, no territories, no military zones
+ *  stateInput: {
+ *     caseSensitive: false,
+ *     includeTerritories: true,
+ *  }
+ *
+ *  Only allow capital letters, include territories
+ *  stateInput: {
+ *     caseSensitive: true,
+ *     includeTerritories: true
+ *  }
+ *
+ */
+$.validator.addMethod( "provinceCA", function( value, element, options ) {
+    var isDefault = typeof options === "undefined",
+        caseSensitive = ( isDefault || typeof options.caseSensitive === "undefined" ) ? false : options.caseSensitive,
+        includeTerritories = ( isDefault || typeof options.includeTerritories === "undefined" ) ? true : options.includeTerritories,
+        regex;
+
+    if ( includeTerritories ) {
+        regex = "^(AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT)$";
+    } else {
+        regex = "^(AB|BC|MB|N[BLS]|ON|PE|QC|SK)$";
+    }
+
+    regex = caseSensitive ? new RegExp( regex ) : new RegExp( regex, "i" );
+    return this.optional( element ) || regex.test( value );
+}, "Please specify a valid province" );
 
 // TODO check if value starts with <, otherwise don't try stripping anything
 $.validator.addMethod( "strippedminlength", function( value, element, param ) {
